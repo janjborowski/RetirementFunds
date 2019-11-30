@@ -9,10 +9,13 @@ final class DependencyContainer {
     
     func createInitialController() -> UIViewController {
         let router = OptionsListRouter(ikeCalculatorProvider: ikeCalculatorProvider)
-        let viewModel = OptionsListViewModel(router: router)
-        let viewController = OptionsListViewController(viewModel: viewModel)
+        let presenter = OptionsListPresenter()
+        let interactor = OptionsListInteractor(router: router, presenter: presenter)
+        let viewController = OptionsListViewController(interactor: interactor)
         let rootController = UINavigationController(rootViewController: viewController)
     
+        presenter.viewController = viewController
+        
         router.sourceViewController = rootController
         return rootController
     }
