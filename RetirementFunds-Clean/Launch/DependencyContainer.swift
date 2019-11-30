@@ -5,27 +5,20 @@ final class DependencyContainer {
     
     private let container = Container()
     
-    init() {
-        registerViewModels()
-        registerViewControllers()
-    }
-    
-    private func registerViewModels() {
-        container.register(OptionsListViewModelProtocol.self) { (resolver) -> OptionsListViewModelProtocol in
-            return OptionsListViewModel()
-        }
-    }
-    
-    private func registerViewControllers() {
-        container.register(OptionsListViewController.self) { (resolver) -> OptionsListViewController in
-            let viewModel = resolver.resolve(OptionsListViewModelProtocol.self)!
-            return OptionsListViewController(viewModel: viewModel)
-        }
-    }
+    init() {}
     
     func createInitialController() -> UIViewController {
-        let viewController = container.resolve(OptionsListViewController.self)!
-        return UINavigationController(rootViewController: viewController)
+        let router = OptionsListRouter(ikeCalculatorProvider: ikeCalculatorProvider)
+        let viewModel = OptionsListViewModel(router: router)
+        let viewController = OptionsListViewController(viewModel: viewModel)
+        let rootController = UINavigationController(rootViewController: viewController)
+    
+        router.sourceViewController = rootController
+        return rootController
+    }
+    
+    func ikeCalculatorProvider() -> UIViewController {
+        return IKECalculatorViewController()
     }
     
 }

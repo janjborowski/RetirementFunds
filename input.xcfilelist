@@ -1,1 +1,2 @@
 $(SRCROOT)/Carthage/Build/iOS/Swinject.framework
+$(SRCROOT)/Carthage/Build/iOS/Eureka.framework

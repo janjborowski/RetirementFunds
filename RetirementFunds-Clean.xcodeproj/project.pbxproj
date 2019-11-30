@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		F207A4A723926874008793C0 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4A623926874008793C0 /* String+Localized.swift */; };
 		F207A4B0239270F0008793C0 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A4AF239270F0008793C0 /* Swinject.framework */; };
+		F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */; };
+		F207A4BC2392746F008793C0 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A4BB2392746F008793C0 /* Eureka.framework */; };
+		F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4BE23927575008793C0 /* OptionsListRouter.swift */; };
+		F207A4C123927834008793C0 /* IKECalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */; };
 		F233F048239264D50078114F /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233F047239264D50078114F /* DependencyContainer.swift */; };
 		F233F04B2392667E0078114F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F233F04D2392667E0078114F /* Localizable.strings */; };
 		F2ABC563238A7C0D000D66E6 /* OptionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ABC562238A7C0D000D66E6 /* OptionsListViewModel.swift */; };
@@ -41,6 +45,10 @@
 		F207A4AF239270F0008793C0 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
 		F207A4B423927135008793C0 /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
 		F207A4B623927163008793C0 /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
+		F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorViewController.swift; sourceTree = "<group>"; };
+		F207A4BB2392746F008793C0 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		F207A4BE23927575008793C0 /* OptionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListRouter.swift; sourceTree = "<group>"; };
+		F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorViewModel.swift; sourceTree = "<group>"; };
 		F233F047239264D50078114F /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		F233F04C2392667E0078114F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2ABC562238A7C0D000D66E6 /* OptionsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListViewModel.swift; sourceTree = "<group>"; };
@@ -61,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F207A4B0239270F0008793C0 /* Swinject.framework in Frameworks */,
+				F207A4BC2392746F008793C0 /* Eureka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +87,19 @@
 		F207A4AE239270F0008793C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F207A4BB2392746F008793C0 /* Eureka.framework */,
 				F207A4AF239270F0008793C0 /* Swinject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F207A4B82392737C008793C0 /* IKECalculator */ = {
+			isa = PBXGroup;
+			children = (
+				F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */,
+				F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */,
+			);
+			path = IKECalculator;
 			sourceTree = "<group>";
 		};
 		F233F046239264B10078114F /* Resources */ = {
@@ -128,6 +147,7 @@
 		F2FD6D0B238A779D00FDF5BF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F207A4B82392737C008793C0 /* IKECalculator */,
 				F2FD6D1A238A7A6500FDF5BF /* OptionsList */,
 			);
 			path = Screens;
@@ -150,6 +170,7 @@
 				F2ABC562238A7C0D000D66E6 /* OptionsListViewModel.swift */,
 				F2FD6D1D238A7A7500FDF5BF /* OptionsListCell.swift */,
 				F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */,
+				F207A4BE23927575008793C0 /* OptionsListRouter.swift */,
 			);
 			path = OptionsList;
 			sourceTree = "<group>";
@@ -254,10 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F207A4C123927834008793C0 /* IKECalculatorViewModel.swift in Sources */,
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
 				F2ABC563238A7C0D000D66E6 /* OptionsListViewModel.swift in Sources */,
+				F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */,
 				F207A4A723926874008793C0 /* String+Localized.swift in Sources */,
 				F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */,
+				F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */,
 				F2FD6D1E238A7A7500FDF5BF /* OptionsListCell.swift in Sources */,
 				F2FD6D19238A787200FDF5BF /* SceneDelegate.swift in Sources */,
 				F2FD6D1C238A7A6500FDF5BF /* OptionsListViewController.swift in Sources */,

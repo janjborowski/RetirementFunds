@@ -1,1 +1,2 @@
 github "Swinject/Swinject"
+github "xmartlabs/Eureka" ~> 5.0
