@@ -12,12 +12,15 @@
 		F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */; };
 		F207A4BC2392746F008793C0 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F207A4BB2392746F008793C0 /* Eureka.framework */; };
 		F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4BE23927575008793C0 /* OptionsListRouter.swift */; };
-		F207A4C123927834008793C0 /* IKECalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */; };
+		F207A4C123927834008793C0 /* IKECalculatorInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C023927834008793C0 /* IKECalculatorInteractor.swift */; };
 		F207A4C72392FD1A008793C0 /* OptionsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C62392FD1A008793C0 /* OptionsListInteractor.swift */; };
 		F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C82392FD3D008793C0 /* OptionsListPresenter.swift */; };
+		F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */; };
+		F207A4E423930649008793C0 /* IKECalculatorUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */; };
 		F233F048239264D50078114F /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233F047239264D50078114F /* DependencyContainer.swift */; };
 		F233F04B2392667E0078114F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F233F04D2392667E0078114F /* Localizable.strings */; };
 		F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */; };
+		F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */; };
 		F2FD6D15238A787200FDF5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D0F238A787200FDF5BF /* Assets.xcassets */; };
 		F2FD6D16238A787200FDF5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D10238A787200FDF5BF /* LaunchScreen.storyboard */; };
 		F2FD6D17238A787200FDF5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D12238A787200FDF5BF /* AppDelegate.swift */; };
@@ -25,6 +28,16 @@
 		F2FD6D1C238A7A6500FDF5BF /* OptionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D1B238A7A6500FDF5BF /* OptionsListViewController.swift */; };
 		F2FD6D1E238A7A7500FDF5BF /* OptionsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D1D238A7A7500FDF5BF /* OptionsListCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F207A4DF23930638008793C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2FD6CEC238A74DC00FDF5BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2FD6CF3238A74DC00FDF5BF;
+			remoteInfo = "RetirementFunds-Clean";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F207A4B2239270F0008793C0 /* Embed Frameworks */ = {
@@ -49,12 +62,17 @@
 		F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorViewController.swift; sourceTree = "<group>"; };
 		F207A4BB2392746F008793C0 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		F207A4BE23927575008793C0 /* OptionsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListRouter.swift; sourceTree = "<group>"; };
-		F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorViewModel.swift; sourceTree = "<group>"; };
+		F207A4C023927834008793C0 /* IKECalculatorInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorInteractor.swift; sourceTree = "<group>"; };
 		F207A4C62392FD1A008793C0 /* OptionsListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsListInteractor.swift; sourceTree = "<group>"; };
 		F207A4C82392FD3D008793C0 /* OptionsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListPresenter.swift; sourceTree = "<group>"; };
+		F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorUseCase.swift; sourceTree = "<group>"; };
+		F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKECalculatorUseCaseTests.swift; sourceTree = "<group>"; };
+		F207A4DA23930638008793C0 /* RetirementFunds-CleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RetirementFunds-CleanTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F207A4DE23930638008793C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F233F047239264D50078114F /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		F233F04C2392667E0078114F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListCellViewModel.swift; sourceTree = "<group>"; };
+		F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorPresenter.swift; sourceTree = "<group>"; };
 		F2FD6CF4238A74DC00FDF5BF /* RetirementFunds-Clean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RetirementFunds-Clean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FD6D0F238A787200FDF5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2FD6D11238A787200FDF5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +84,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F207A4D723930638008793C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2FD6CF1238A74DC00FDF5BF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -99,9 +124,35 @@
 			isa = PBXGroup;
 			children = (
 				F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */,
-				F207A4C023927834008793C0 /* IKECalculatorViewModel.swift */,
+				F207A4C023927834008793C0 /* IKECalculatorInteractor.swift */,
+				F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */,
 			);
 			path = IKECalculator;
+			sourceTree = "<group>";
+		};
+		F207A4CB2393013D008793C0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F207A4D32393060B008793C0 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F207A4DB23930638008793C0 /* RetirementFunds-CleanTests */ = {
+			isa = PBXGroup;
+			children = (
+				F207A4D32393060B008793C0 /* Domain */,
+				F207A4DE23930638008793C0 /* Info.plist */,
+			);
+			path = "RetirementFunds-CleanTests";
 			sourceTree = "<group>";
 		};
 		F233F046239264B10078114F /* Resources */ = {
@@ -119,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				F2FD6CF6238A74DC00FDF5BF /* RetirementFunds-Clean */,
+				F207A4DB23930638008793C0 /* RetirementFunds-CleanTests */,
 				F2FD6CF5238A74DC00FDF5BF /* Products */,
 				F207A4AC23926FE2008793C0 /* Cartfile */,
 				F207A4B423927135008793C0 /* input.xcfilelist */,
@@ -131,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F2FD6CF4238A74DC00FDF5BF /* RetirementFunds-Clean.app */,
+				F207A4DA23930638008793C0 /* RetirementFunds-CleanTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				F2FD6D0B238A779D00FDF5BF /* Screens */,
+				F207A4CB2393013D008793C0 /* Domain */,
 				F207A4A52392685F008793C0 /* Utilities */,
 				F2FD6D0E238A787200FDF5BF /* Launch */,
 				F233F046239264B10078114F /* Resources */,
@@ -181,6 +235,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F207A4D923930638008793C0 /* RetirementFunds-CleanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F207A4E123930638008793C0 /* Build configuration list for PBXNativeTarget "RetirementFunds-CleanTests" */;
+			buildPhases = (
+				F207A4D623930638008793C0 /* Sources */,
+				F207A4D723930638008793C0 /* Frameworks */,
+				F207A4D823930638008793C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F207A4E023930638008793C0 /* PBXTargetDependency */,
+			);
+			name = "RetirementFunds-CleanTests";
+			productName = "RetirementFunds-CleanTests";
+			productReference = F207A4DA23930638008793C0 /* RetirementFunds-CleanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F2FD6CF3238A74DC00FDF5BF /* RetirementFunds-Clean */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F2FD6D08238A74DD00FDF5BF /* Build configuration list for PBXNativeTarget "RetirementFunds-Clean" */;
@@ -212,6 +284,10 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Jan Borowski";
 				TargetAttributes = {
+					F207A4D923930638008793C0 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = F2FD6CF3238A74DC00FDF5BF;
+					};
 					F2FD6CF3238A74DC00FDF5BF = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -234,11 +310,19 @@
 			projectRoot = "";
 			targets = (
 				F2FD6CF3238A74DC00FDF5BF /* RetirementFunds-Clean */,
+				F207A4D923930638008793C0 /* RetirementFunds-CleanTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F207A4D823930638008793C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2FD6CF2238A74DC00FDF5BF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,17 +358,27 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F207A4D623930638008793C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F207A4E423930649008793C0 /* IKECalculatorUseCaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F2FD6CF0238A74DC00FDF5BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F207A4C123927834008793C0 /* IKECalculatorViewModel.swift in Sources */,
+				F207A4C123927834008793C0 /* IKECalculatorInteractor.swift in Sources */,
 				F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */,
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
 				F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */,
 				F207A4A723926874008793C0 /* String+Localized.swift in Sources */,
 				F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */,
 				F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */,
+				F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */,
+				F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */,
 				F2FD6D1E238A7A7500FDF5BF /* OptionsListCell.swift in Sources */,
 				F2FD6D19238A787200FDF5BF /* SceneDelegate.swift in Sources */,
 				F2FD6D1C238A7A6500FDF5BF /* OptionsListViewController.swift in Sources */,
@@ -294,6 +388,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F207A4E023930638008793C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2FD6CF3238A74DC00FDF5BF /* RetirementFunds-Clean */;
+			targetProxy = F207A4DF23930638008793C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F233F04D2392667E0078114F /* Localizable.strings */ = {
@@ -316,6 +418,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F207A4E223930638008793C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "RetirementFunds-CleanTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jb.RetirementFunds-CleanTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RetirementFunds-Clean.app/RetirementFunds-Clean";
+			};
+			name = Debug;
+		};
+		F207A4E323930638008793C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "RetirementFunds-CleanTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "jb.RetirementFunds-CleanTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RetirementFunds-Clean.app/RetirementFunds-Clean";
+			};
+			name = Release;
+		};
 		F2FD6D06238A74DD00FDF5BF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -479,6 +621,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F207A4E123930638008793C0 /* Build configuration list for PBXNativeTarget "RetirementFunds-CleanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F207A4E223930638008793C0 /* Debug */,
+				F207A4E323930638008793C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F2FD6CEF238A74DC00FDF5BF /* Build configuration list for PBXProject "RetirementFunds-Clean" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

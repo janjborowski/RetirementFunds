@@ -21,7 +21,14 @@ final class DependencyContainer {
     }
     
     func ikeCalculatorProvider() -> UIViewController {
-        return IKECalculatorViewController()
+        let useCase = IKECalculatorUseCase()
+        let presenter = IKECalculatorPresenter()
+        let interactor = IKECalculatorInteractor(presenter: presenter, ikeCalculator: useCase)
+        let viewController = IKECalculatorViewController(interactor: interactor)
+        
+        presenter.viewController = viewController
+        
+        return viewController
     }
     
 }
