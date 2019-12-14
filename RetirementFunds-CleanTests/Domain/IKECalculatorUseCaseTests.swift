@@ -21,10 +21,11 @@ final class IKECalculatorUseCaseTests: XCTestCase {
         let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 20)
         
         // Act
-        let futureCapital = sut.computeFutureCapital(plan: plan)
+        let futureCapital = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(futureCapital, 30969)
+        XCTAssertEqual(futureCapital.beforeTaxation, 30969)
+        XCTAssertEqual(futureCapital.afterTaxation, 28885)
     }
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for5YearPeriod() {
@@ -32,10 +33,11 @@ final class IKECalculatorUseCaseTests: XCTestCase {
         let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 5)
         
         // Act
-        let futureCapital = sut.computeFutureCapital(plan: plan)
+        let futureCapital = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(futureCapital, 5632)
+        XCTAssertEqual(futureCapital.beforeTaxation, 5632)
+        XCTAssertEqual(futureCapital.afterTaxation, 5512)
     }
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for1YearPeriod() {
@@ -43,10 +45,11 @@ final class IKECalculatorUseCaseTests: XCTestCase {
         let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 1)
         
         // Act
-        let futureCapital = sut.computeFutureCapital(plan: plan)
+        let futureCapital = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(futureCapital, 1040)
+        XCTAssertEqual(futureCapital.beforeTaxation, 1040)
+        XCTAssertEqual(futureCapital.afterTaxation, 1032)
     }
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for0YearPeriod() {
@@ -54,10 +57,11 @@ final class IKECalculatorUseCaseTests: XCTestCase {
         let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 0)
         
         // Act
-        let futureCapital = sut.computeFutureCapital(plan: plan)
+        let futureCapital = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(futureCapital, 1000)
+        XCTAssertEqual(futureCapital.beforeTaxation, 1000)
+        XCTAssertEqual(futureCapital.afterTaxation, 1000)
     }
 
 }

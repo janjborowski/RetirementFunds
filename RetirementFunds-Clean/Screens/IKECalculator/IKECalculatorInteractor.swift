@@ -40,7 +40,7 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
         }
         let plan = RetirementPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetirement)
         let futureCapital = ikeCalculator.computeFutureCapital(for: plan)
-        presenter.show(futureCapital: futureCapital)
+        presenter.show(futureCapital: futureCapital.beforeTaxation)
     }
     
 }
