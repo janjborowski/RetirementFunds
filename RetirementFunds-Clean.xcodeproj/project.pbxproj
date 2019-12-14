@@ -21,6 +21,8 @@
 		F233F04B2392667E0078114F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F233F04D2392667E0078114F /* Localizable.strings */; };
 		F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */; };
 		F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */; };
+		F2AE367E23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367D23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift */; };
+		F2AE368023A4E756006D4BE6 /* IKECalculatorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367F23A4E756006D4BE6 /* IKECalculatorRouter.swift */; };
 		F2FD6D15238A787200FDF5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D0F238A787200FDF5BF /* Assets.xcassets */; };
 		F2FD6D16238A787200FDF5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D10238A787200FDF5BF /* LaunchScreen.storyboard */; };
 		F2FD6D17238A787200FDF5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D12238A787200FDF5BF /* AppDelegate.swift */; };
@@ -73,6 +75,8 @@
 		F233F04C2392667E0078114F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListCellViewModel.swift; sourceTree = "<group>"; };
 		F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorPresenter.swift; sourceTree = "<group>"; };
+		F2AE367D23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateOfReturnExplanationViewController.swift; sourceTree = "<group>"; };
+		F2AE367F23A4E756006D4BE6 /* IKECalculatorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorRouter.swift; sourceTree = "<group>"; };
 		F2FD6CF4238A74DC00FDF5BF /* RetirementFunds-Clean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RetirementFunds-Clean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FD6D0F238A787200FDF5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2FD6D11238A787200FDF5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				F207A4B92392738D008793C0 /* IKECalculatorViewController.swift */,
 				F207A4C023927834008793C0 /* IKECalculatorInteractor.swift */,
 				F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */,
+				F2AE367F23A4E756006D4BE6 /* IKECalculatorRouter.swift */,
 			);
 			path = IKECalculator;
 			sourceTree = "<group>";
@@ -166,6 +171,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F2AE367C23A4E718006D4BE6 /* RateOfReturnExplanation */ = {
+			isa = PBXGroup;
+			children = (
+				F2AE367D23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift */,
+			);
+			path = RateOfReturnExplanation;
+			sourceTree = "<group>";
+		};
 		F2FD6CEB238A74DC00FDF5BF = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +216,7 @@
 		F2FD6D0B238A779D00FDF5BF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F2AE367C23A4E718006D4BE6 /* RateOfReturnExplanation */,
 				F207A4B82392737C008793C0 /* IKECalculator */,
 				F2FD6D1A238A7A6500FDF5BF /* OptionsList */,
 			);
@@ -375,8 +389,10 @@
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
 				F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */,
 				F207A4A723926874008793C0 /* String+Localized.swift in Sources */,
+				F2AE367E23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift in Sources */,
 				F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */,
 				F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */,
+				F2AE368023A4E756006D4BE6 /* IKECalculatorRouter.swift in Sources */,
 				F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */,
 				F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */,
 				F2FD6D1E238A7A7500FDF5BF /* OptionsListCell.swift in Sources */,

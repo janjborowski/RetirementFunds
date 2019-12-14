@@ -8,10 +8,12 @@ protocol IKECalculatorViewControllerProtocol: AnyObject {
 final class IKECalculatorViewController: FormViewController {
     
     private enum RowTag: String {
+        case rateOfReturn
         case futureCapital
     }
     
     private let interactor: IKECalculatorInteractorProtocol
+    private let basicRateOfReturn = 4
     
     init(interactor: IKECalculatorInteractorProtocol) {
         self.interactor = interactor
@@ -41,12 +43,29 @@ final class IKECalculatorViewController: FormViewController {
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(yearsToRetirement: row.value)
             }
+            <<< IntRow(RowTag.rateOfReturn.rawValue) {
+                $0.title = "rate_of_return".localized
+                let formatter = NumberFormatter()
+                formatter.numberStyle = .percent
+                formatter.multiplier = 1
+                $0.formatter = formatter
+                $0.value = basicRateOfReturn
+                $0.cell.accessoryType = .detailButton
+            }
         
         form +++ Section()
             <<< TextRow(RowTag.futureCapital.rawValue) { row in
                 row.title = "future_capital".localized
                 row.cell.textField.isUserInteractionEnabled = false
             }
+    }
+    
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        guard form.rowBy(tag: RowTag.rateOfReturn.rawValue)?.indexPath == indexPath else {
+            return
+        }
+        
+        interactor.showRateOfReturnExplanation()
     }
     
 }

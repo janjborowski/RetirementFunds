@@ -21,14 +21,21 @@ final class DependencyContainer {
     }
     
     func ikeCalculatorProvider() -> UIViewController {
+        let router = IKECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
         let useCase = IKECalculatorUseCase()
         let presenter = IKECalculatorPresenter()
-        let interactor = IKECalculatorInteractor(presenter: presenter, ikeCalculator: useCase)
+        let interactor = IKECalculatorInteractor(router: router, presenter: presenter, ikeCalculator: useCase)
         let viewController = IKECalculatorViewController(interactor: interactor)
         
         presenter.viewController = viewController
+        router.sourceViewController = viewController
         
         return viewController
+    }
+    
+    func rateOfReturnExplanationProvider() -> UIViewController {
+        let viewController = RateOfReturnExplanationViewController()
+        return UINavigationController(rootViewController: viewController)
     }
     
 }

@@ -1,19 +1,26 @@
 protocol IKECalculatorInteractorProtocol {
+    func showRateOfReturnExplanation()
     func update(annualInput: Int?)
     func update(yearsToRetirement: Int?)
 }
 
 final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     
+    private let router: IKECalculatorRouterProtocol
     private let presenter: IKECalculatorPresenterProtocol
     private let ikeCalculator: IKECalculatorUseCaseProtocol
     
     private var annualInput: Int?
     private var yearsToRetirement: Int?
     
-    init(presenter: IKECalculatorPresenterProtocol, ikeCalculator: IKECalculatorUseCaseProtocol) {
+    init(router: IKECalculatorRouterProtocol, presenter: IKECalculatorPresenterProtocol, ikeCalculator: IKECalculatorUseCaseProtocol) {
+        self.router = router
         self.presenter = presenter
         self.ikeCalculator = ikeCalculator
+    }
+    
+    func showRateOfReturnExplanation() {
+        router.showRateOfReturnExplanation()
     }
     
     func update(annualInput: Int?) {
