@@ -51,6 +51,8 @@ final class IKECalculatorViewController: FormViewController {
                 $0.formatter = formatter
                 $0.value = basicRateOfReturn
                 $0.cell.accessoryType = .detailButton
+            }.cellUpdate { [weak self] (_, row) in
+                self?.interactor.update(rateOfReturn: row.value)
             }
         
         form +++ Section()

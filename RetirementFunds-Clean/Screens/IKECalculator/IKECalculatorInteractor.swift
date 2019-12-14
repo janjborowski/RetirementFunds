@@ -2,6 +2,7 @@ protocol IKECalculatorInteractorProtocol {
     func showRateOfReturnExplanation()
     func update(annualInput: Int?)
     func update(yearsToRetirement: Int?)
+    func update(rateOfReturn: Int?)
 }
 
 final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
@@ -12,6 +13,7 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     
     private var annualInput: Int?
     private var yearsToRetirement: Int?
+    private var rateOfReturn: Int?
     
     init(router: IKECalculatorRouterProtocol, presenter: IKECalculatorPresenterProtocol, ikeCalculator: IKECalculatorUseCaseProtocol) {
         self.router = router
@@ -33,12 +35,18 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
         recalculateIfPossible()
     }
     
+    func update(rateOfReturn: Int?) {
+        self.rateOfReturn = rateOfReturn
+        recalculateIfPossible()
+    }
+    
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
-            let yearsToRetirement = yearsToRetirement else {
+            let yearsToRetirement = yearsToRetirement,
+            let rateOfReturn = rateOfReturn else {
                 return
         }
-        let plan = RetirementPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetirement)
+        let plan = RetirementPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetirement, rateOfReturn: rateOfReturn)
         let futureCapital = ikeCalculator.computeFutureCapital(for: plan)
         presenter.show(futureCapital: futureCapital.beforeTaxation)
     }

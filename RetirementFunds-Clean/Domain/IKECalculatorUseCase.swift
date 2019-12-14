@@ -4,7 +4,7 @@ struct RetirementPlan {
     
     let annualSavingsAmount: Int
     let yearsToRetire: Int
-    let rateOfReturn = 4
+    let rateOfReturn: Int
     
 }
 

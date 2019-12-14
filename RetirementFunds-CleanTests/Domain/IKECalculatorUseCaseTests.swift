@@ -4,6 +4,7 @@ import XCTest
 final class IKECalculatorUseCaseTests: XCTestCase {
 
     private let annualSavingsAmmount = 1000
+    private let rateOfReturn = 4
     private var sut: IKECalculatorUseCase!
     
     override func setUp() {
@@ -18,7 +19,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for20YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 20)
+        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 20, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -30,7 +31,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for5YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 5)
+        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 5, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -42,7 +43,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for1YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 1)
+        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 1, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -54,7 +55,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for0YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 0)
+        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 0, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
