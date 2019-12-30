@@ -2,12 +2,14 @@ import UIKit
 import Eureka
 
 protocol IKECalculatorViewControllerProtocol: AnyObject {
-    func show(futureCapital: String)
+    func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter)
+    func show(futureCapital: Int)
 }
 
 final class IKECalculatorViewController: FormViewController {
     
     private enum RowTag: String {
+        case annualInput
         case rateOfReturn
         case futureCapital
     }
@@ -28,12 +30,13 @@ final class IKECalculatorViewController: FormViewController {
         super.viewDidLoad()
         
         setUpForm()
+        interactor.setUp()
         title = "ike".localized
     }
     
     private func setUpForm() {
         form +++ Section()
-            <<< IntRow() { row in
+            <<< IntRow(RowTag.annualInput.rawValue) { row in
                 row.title = "annual_input".localized
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(annualInput: row.value)
@@ -45,18 +48,19 @@ final class IKECalculatorViewController: FormViewController {
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
-                let formatter = NumberFormatter()
-                formatter.numberStyle = .percent
-                formatter.multiplier = 1
-                $0.formatter = formatter
                 $0.value = basicRateOfReturn
                 $0.cell.accessoryType = .detailButton
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(rateOfReturn: row.value)
             }
+            <<< SwitchRow() {
+                $0.title = "early_exit".localized
+            }.onChange { [weak self] (row) in
+                self?.interactor.update(earlyExit: row.value)
+            }
         
         form +++ Section()
-            <<< TextRow(RowTag.futureCapital.rawValue) { row in
+            <<< IntRow(RowTag.futureCapital.rawValue) { row in
                 row.title = "future_capital".localized
                 row.cell.textField.isUserInteractionEnabled = false
             }
@@ -74,12 +78,36 @@ final class IKECalculatorViewController: FormViewController {
 
 extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     
-    func show(futureCapital: String) {
-        guard let textRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? TextRow else {
+    func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter) {
+        load(currencyFormatter: currencyFormatter)
+        load(rateOfReturnFormatter: rateOfReturnFormatter)
+    }
+    
+    private func load(currencyFormatter: Formatter) {
+        guard let annualInputRow = form.rowBy(tag: RowTag.annualInput.rawValue) as? IntRow,
+            let futureCapitalRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? IntRow else {
+                return
+        }
+        
+        annualInputRow.formatter = currencyFormatter
+        futureCapitalRow.formatter = currencyFormatter
+    }
+    
+    private func load(rateOfReturnFormatter: Formatter) {
+        guard let rateOfReturnRow = form.rowBy(tag: RowTag.rateOfReturn.rawValue) as? IntRow else {
+                return
+        }
+        
+        rateOfReturnRow.formatter = rateOfReturnFormatter
+    }
+    
+    func show(futureCapital: Int) {
+        guard let futureCapitalRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? IntRow else {
             return
         }
         
-        textRow.cell.textField.text = futureCapital
+        futureCapitalRow.value = futureCapital
+        futureCapitalRow.reload()
     }
     
 }
