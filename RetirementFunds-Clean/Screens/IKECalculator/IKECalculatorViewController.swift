@@ -88,8 +88,8 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     }
     
     private func load(currencyFormatter: Formatter) {
-        guard let annualInputRow = form.rowBy(tag: RowTag.annualInput.rawValue) as? IntRow,
-            let futureCapitalRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? IntRow else {
+        guard let annualInputRow = find(intRow: .annualInput),
+            let futureCapitalRow = find(intRow: .futureCapital) else {
                 return
         }
         
@@ -98,7 +98,7 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     }
     
     private func load(rateOfReturnFormatter: Formatter) {
-        guard let rateOfReturnRow = form.rowBy(tag: RowTag.rateOfReturn.rawValue) as? IntRow else {
+        guard let rateOfReturnRow = find(intRow: .rateOfReturn) else {
                 return
         }
         
@@ -106,7 +106,7 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     }
     
     func showValidAnnualInput() {
-        guard let errorRow = form.rowBy(tag: RowTag.annualInputError.rawValue) as? LabelRow,
+        guard let errorRow = find(labelRow: .annualInputError),
             let index = errorRow.indexPath?.row else {
             return
         }
@@ -115,7 +115,7 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     }
     
     func showInvalidAnnualInput(errorRow: LabelRow) {
-        guard let annualInputRow: IntRow = find(row: .annualInput),
+        guard let annualInputRow = find(intRow: .annualInput),
             form.rowBy(tag: RowTag.annualInputError.rawValue) == nil else {
                 return
         }
@@ -125,7 +125,7 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     }
     
     func show(futureCapital: Int) {
-        guard let futureCapitalRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? IntRow else {
+        guard let futureCapitalRow = find(intRow: .futureCapital) else {
             return
         }
         
@@ -135,6 +135,14 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
     
     private func find<T: RowType>(row tag: RowTag) -> T? {
         return form.rowBy(tag: tag.rawValue)
+    }
+    
+    private func find(intRow tag: RowTag) -> IntRow? {
+        return find(row: tag)
+    }
+    
+    private func find(labelRow tag: RowTag) -> LabelRow? {
+        return find(row: tag)
     }
     
 }
