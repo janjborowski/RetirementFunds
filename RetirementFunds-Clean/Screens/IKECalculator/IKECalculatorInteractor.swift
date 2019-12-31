@@ -13,6 +13,8 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     private let presenter: IKECalculatorPresenterProtocol
     private let ikeCalculator: IKECalculatorUseCaseProtocol
     
+    private let maximumIKELimit = 15681
+    
     private var annualInput: Int?
     private var yearsToRetirement: Int?
     private var rateOfReturn: Int?
@@ -33,8 +35,17 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     }
     
     func update(annualInput: Int?) {
-        self.annualInput = annualInput
-        recalculateIfPossible()
+        guard let annualInput = annualInput else {
+            return
+        }
+        
+        if annualInput <= maximumIKELimit {
+            self.annualInput = annualInput
+            recalculateIfPossible()
+            presenter.showValidAnnualInput()
+        } else {
+            presenter.showInvalidAnnualInput(limit: maximumIKELimit)
+        }
     }
     
     func update(yearsToRetirement: Int?) {

@@ -4,12 +4,16 @@ import Eureka
 protocol IKECalculatorViewControllerProtocol: AnyObject {
     func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter)
     func show(futureCapital: Int)
+    
+    func showValidAnnualInput()
+    func showInvalidAnnualInput(errorRow: LabelRow)
 }
 
 final class IKECalculatorViewController: FormViewController {
     
     private enum RowTag: String {
         case annualInput
+        case annualInputError
         case rateOfReturn
         case futureCapital
     }
@@ -101,6 +105,25 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
         rateOfReturnRow.formatter = rateOfReturnFormatter
     }
     
+    func showValidAnnualInput() {
+        guard let errorRow = form.rowBy(tag: RowTag.annualInputError.rawValue) as? LabelRow,
+            let index = errorRow.indexPath?.row else {
+            return
+        }
+        
+        errorRow.section?.remove(at: index)
+    }
+    
+    func showInvalidAnnualInput(errorRow: LabelRow) {
+        guard let annualInputRow: IntRow = find(row: .annualInput),
+            form.rowBy(tag: RowTag.annualInputError.rawValue) == nil else {
+                return
+        }
+        
+        errorRow.tag = RowTag.annualInputError.rawValue
+        try? annualInputRow.section?.insert(row: errorRow, after: annualInputRow)
+    }
+    
     func show(futureCapital: Int) {
         guard let futureCapitalRow = form.rowBy(tag: RowTag.futureCapital.rawValue) as? IntRow else {
             return
@@ -108,6 +131,10 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
         
         futureCapitalRow.value = futureCapital
         futureCapitalRow.reload()
+    }
+    
+    private func find<T: RowType>(row tag: RowTag) -> T? {
+        return form.rowBy(tag: tag.rawValue)
     }
     
 }
