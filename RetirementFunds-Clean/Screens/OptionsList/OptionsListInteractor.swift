@@ -27,6 +27,8 @@ final class OptionsListInteractor: OptionsListInteractorProtocol {
         switch option {
         case .ike:
             router.goToIKE()
+        case .ikze:
+            router.goToIKZE()
         default:
             break
         }

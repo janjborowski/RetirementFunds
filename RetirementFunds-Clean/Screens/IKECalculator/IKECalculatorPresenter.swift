@@ -10,28 +10,14 @@ protocol IKECalculatorPresenterProtocol {
 }
 
 final class IKECalculatorPresenter: IKECalculatorPresenterProtocol {
-
-    private lazy var currencyFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.currencyCode = "PLN"
-        formatter.numberStyle = .currency
-        formatter.currencyGroupingSeparator = " "
-        formatter.maximumFractionDigits = 0
-        formatter.locale = .onlyLocale
-        return formatter
-    }()
-    
-    private lazy var rateOfReturnFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .percent
-        formatter.multiplier = 1
-        return formatter
-    }()
     
     weak var viewController: IKECalculatorViewControllerProtocol?
     
     func setUpPresenting() {
-        viewController?.loadFormatters(currencyFormatter: currencyFormatter, rateOfReturnFormatter: rateOfReturnFormatter)
+        viewController?.loadFormatters(
+            currencyFormatter: NumberFormatter.currencyFormatter,
+            rateOfReturnFormatter: NumberFormatter.rateOfReturnFormatter
+        )
     }
     
     func show(futureCapital: Int) {
@@ -44,7 +30,7 @@ final class IKECalculatorPresenter: IKECalculatorPresenterProtocol {
     
     func showInvalidAnnualInput(limit: Int) {
         let errorRow = LabelRow() {
-            let limitFormatted = currencyFormatter.string(for: limit) ?? ""
+            let limitFormatted = NumberFormatter.currencyFormatter.string(for: limit) ?? ""
             $0.title = String(format: "ike_limit_exceeded".localized, limitFormatted)
             $0.cell.height = { 35 }
             $0.cell.backgroundColor = .red

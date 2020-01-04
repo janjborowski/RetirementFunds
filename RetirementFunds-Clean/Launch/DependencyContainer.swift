@@ -8,7 +8,7 @@ final class DependencyContainer {
     init() {}
     
     func createInitialController() -> UIViewController {
-        let router = OptionsListRouter(ikeCalculatorProvider: ikeCalculatorProvider)
+        let router = OptionsListRouter(ikeCalculatorProvider: ikeCalculatorProvider, ikzeCalculatorProvider: ikzeCalculatorProvider)
         let presenter = OptionsListPresenter()
         let interactor = OptionsListInteractor(router: router, presenter: presenter)
         let viewController = OptionsListViewController(interactor: interactor)
@@ -26,6 +26,19 @@ final class DependencyContainer {
         let presenter = IKECalculatorPresenter()
         let interactor = IKECalculatorInteractor(router: router, presenter: presenter, ikeCalculator: useCase)
         let viewController = IKECalculatorViewController(interactor: interactor)
+        
+        presenter.viewController = viewController
+        router.sourceViewController = viewController
+        
+        return viewController
+    }
+    
+    func ikzeCalculatorProvider() -> UIViewController {
+        let router = IKZECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
+//        let useCase = IKECalculatorUseCase()
+        let presenter = IKZECalculatorPresenter()
+        let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, basicRateOfReturn: FinancialConstants.default.basicRateOfReturn)//, ikeCalculator: useCase)
+        let viewController = IKZECalculatorViewController(interactor: interactor)
         
         presenter.viewController = viewController
         router.sourceViewController = viewController
