@@ -3,6 +3,7 @@ import Eureka
 
 protocol IKECalculatorViewControllerProtocol: AnyObject {
     func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter)
+    func load(rateOfReturn: Int)
     func show(futureCapital: Int)
     
     func showValidAnnualInput()
@@ -19,7 +20,6 @@ final class IKECalculatorViewController: FormViewController {
     }
     
     private let interactor: IKECalculatorInteractorProtocol
-    private let basicRateOfReturn = 4
     
     init(interactor: IKECalculatorInteractorProtocol) {
         self.interactor = interactor
@@ -52,7 +52,6 @@ final class IKECalculatorViewController: FormViewController {
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
-                $0.value = basicRateOfReturn
                 $0.cell.accessoryType = .detailButton
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(rateOfReturn: row.value)
@@ -103,6 +102,15 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
         }
         
         rateOfReturnRow.formatter = rateOfReturnFormatter
+    }
+    
+    func load(rateOfReturn: Int) {
+        guard let rateOfReturnRow = find(intRow: .rateOfReturn) else {
+            return
+        }
+        
+        rateOfReturnRow.value = rateOfReturn
+        rateOfReturnRow.reload()
     }
     
     func showValidAnnualInput() {

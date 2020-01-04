@@ -2,7 +2,7 @@ import Foundation
 import Eureka
 
 protocol IKECalculatorPresenterProtocol {
-    func setUpPresenting()
+    func setUpPresenting(rateOfReturn: Int)
     func show(futureCapital: Int)
     
     func showValidAnnualInput()
@@ -13,11 +13,12 @@ final class IKECalculatorPresenter: IKECalculatorPresenterProtocol {
     
     weak var viewController: IKECalculatorViewControllerProtocol?
     
-    func setUpPresenting() {
+    func setUpPresenting(rateOfReturn: Int) {
         viewController?.loadFormatters(
             currencyFormatter: NumberFormatter.currencyFormatter,
             rateOfReturnFormatter: NumberFormatter.rateOfReturnFormatter
         )
+        viewController?.load(rateOfReturn: rateOfReturn)
     }
     
     func show(futureCapital: Int) {

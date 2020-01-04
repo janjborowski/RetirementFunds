@@ -4,6 +4,7 @@ import Swinject
 final class DependencyContainer {
     
     private let container = Container()
+    private let constants = FinancialConstants.default
     
     init() {}
     
@@ -24,7 +25,7 @@ final class DependencyContainer {
         let router = IKECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
         let useCase = IKECalculatorUseCase()
         let presenter = IKECalculatorPresenter()
-        let interactor = IKECalculatorInteractor(router: router, presenter: presenter, ikeCalculator: useCase)
+        let interactor = IKECalculatorInteractor(router: router, presenter: presenter, ikeCalculator: useCase, basicRateOfReturn: constants.basicRateOfReturn)
         let viewController = IKECalculatorViewController(interactor: interactor)
         
         presenter.viewController = viewController
@@ -37,7 +38,7 @@ final class DependencyContainer {
         let router = IKZECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
 //        let useCase = IKECalculatorUseCase()
         let presenter = IKZECalculatorPresenter()
-        let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, basicRateOfReturn: FinancialConstants.default.basicRateOfReturn)//, ikeCalculator: useCase)
+        let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, basicRateOfReturn: constants.basicRateOfReturn)//, ikeCalculator: useCase)
         let viewController = IKZECalculatorViewController(interactor: interactor)
         
         presenter.viewController = viewController
