@@ -4,6 +4,7 @@ import Eureka
 protocol IKZECalculatorViewControllerProtocol: AnyObject {
     func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter)
     func load(rateOfReturn: Int)
+    func load(taxBracketOptions: [String])
     
     func showValidAnnualInput()
     func showInvalidAnnualInput(errorRow: ErrorLabelRow)
@@ -16,6 +17,7 @@ final class IKZECalculatorViewController: FormViewController {
     private enum RowTag: String {
         case annualInput
         case annualInputError
+        case taxBrackets
         case rateOfReturn
         case futureCapital
         case taxReturn
@@ -51,6 +53,13 @@ final class IKZECalculatorViewController: FormViewController {
                 row.title = "years_to_retirement".localized
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(yearsToRetire: row.value)
+            }
+            <<< PushRow<String>(RowTag.taxBrackets.rawValue) { row in
+                row.title = "tax_bracket".localized
+            }
+            .onChange { [weak self] (row) in
+                let index = row.options?.firstIndex(of: row.value ?? "")
+                self?.interactor.update(taxBracketIndex: index)
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
@@ -99,6 +108,15 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
     
     func load(rateOfReturn: Int) {
         reload(intRow: .rateOfReturn, with: rateOfReturn)
+    }
+    
+    func load(taxBracketOptions: [String]) {
+        guard let row: PushRow<String> = find(row: .taxBrackets) else {
+            return
+        }
+        
+        row.options = taxBracketOptions
+        row.reload()
     }
     
     func showValidAnnualInput() {

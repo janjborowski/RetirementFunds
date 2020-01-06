@@ -1,9 +1,12 @@
+import Foundation
+
 protocol IKZECalculatorInteractorProtocol {
     func setUp()
     func showRateOfReturnExplanation()
     func update(annualInput: Int?)
     func update(yearsToRetire: Int?)
     func update(rateOfReturn: Int?)
+    func update(taxBracketIndex: Int?)
 }
 
 final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
@@ -13,19 +16,23 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     private let ikzeCalculator: IKZECalculatorUseCaseProtocol
     private let maximumIKZELimit = 6272
     
+    private let constants: FinancialConstants
+    
     private var annualInput: Int?
     private var yearsToRetire: Int?
+    private var taxBracket: Decimal?
     private var rateOfReturn: Int
     
-    init(router: IKZECalculatorRouterProtocol, presenter: IKZECalculatorPresenterProtocol, ikzeCalculator: IKZECalculatorUseCaseProtocol, basicRateOfReturn: Int) {
+    init(router: IKZECalculatorRouterProtocol, presenter: IKZECalculatorPresenterProtocol, ikzeCalculator: IKZECalculatorUseCaseProtocol, constants: FinancialConstants) {
         self.router = router
         self.presenter = presenter
-        self.rateOfReturn = basicRateOfReturn
+        self.rateOfReturn = constants.basicRateOfReturn
+        self.constants = constants
         self.ikzeCalculator = ikzeCalculator
     }
     
     func setUp() {
-        presenter.setUpPresenting(rateOfReturn: rateOfReturn)
+        presenter.setUpPresenting(rateOfReturn: rateOfReturn, taxBrackets: constants.taxBrackets)
     }
     
     func showRateOfReturnExplanation() {
@@ -59,13 +66,22 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
         recalculateIfPossible()
     }
     
+    func update(taxBracketIndex: Int?) {
+        guard let index = taxBracketIndex else {
+            return
+        }
+        self.taxBracket = constants.taxBrackets[index].value
+        recalculateIfPossible()
+    }
+    
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
-            let yearsToRetire = yearsToRetire else {
+            let yearsToRetire = yearsToRetire,
+            let taxBracket = taxBracket else {
                 return
         }
         
-        let plan = IKZESavingsPlan(annualSavings: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn, taxBracket: 0.18)
+        let plan = IKZESavingsPlan(annualSavings: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn, taxBracket: taxBracket)
         let result = ikzeCalculator.computeFutureCapital(for: plan)
         presenter.show(futureCapital: result.capital, taxReturn: result.taxReturn)
     }
