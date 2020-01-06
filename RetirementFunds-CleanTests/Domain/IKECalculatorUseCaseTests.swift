@@ -19,7 +19,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for20YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 20, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 20, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -31,7 +31,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for5YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 5, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 5, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -43,7 +43,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for1YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 1, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 1, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)
@@ -55,7 +55,7 @@ final class IKECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldComputeCorrectValue_for0YearPeriod() {
         // Arrange
-        let plan = RetirementPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 0, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(annualSavingsAmount: annualSavingsAmmount, yearsToRetire: 0, rateOfReturn: rateOfReturn)
         
         // Act
         let futureCapital = sut.computeFutureCapital(for: plan)

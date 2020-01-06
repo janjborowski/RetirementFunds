@@ -1,6 +1,6 @@
 import Foundation
 
-struct IKZERetirementSavings {
+struct IKZESavingsPlan {
     
     let annualSavings: Int
     let yearsToRetire: Int

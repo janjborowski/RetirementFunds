@@ -1,23 +1,23 @@
 import Foundation
 
 protocol IKZECalculatorUseCaseProtocol {
-    func computeFutureCapital(for savings: IKZERetirementSavings) -> IKZEResult
+    func computeFutureCapital(for plan: IKZESavingsPlan) -> IKZEResult
 }
 
 final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
     
-    func computeFutureCapital(for savings: IKZERetirementSavings) -> IKZEResult {
-        let annualSavings = Decimal(savings.annualSavings)
+    func computeFutureCapital(for plan: IKZESavingsPlan) -> IKZEResult {
+        let annualSavings = Decimal(plan.annualSavings)
         
-        guard savings.yearsToRetire > 0 else {
-            return .init(noGainsCapital: savings.annualSavings)
+        guard plan.yearsToRetire > 0 else {
+            return .init(noGainsCapital: plan.annualSavings)
         }
         
         var totalCapital: Decimal = 0
-        let taxReturn: Decimal = annualSavings * savings.taxBracket * Decimal(savings.yearsToRetire)
-        let capitalGrowth = 1 + Decimal(savings.rateOfReturn) / 100
+        let taxReturn: Decimal = annualSavings * plan.taxBracket * Decimal(plan.yearsToRetire)
+        let capitalGrowth = 1 + Decimal(plan.rateOfReturn) / 100
         
-        for _ in 0..<savings.yearsToRetire {
+        for _ in 0..<plan.yearsToRetire {
             totalCapital = (totalCapital + annualSavings) * capitalGrowth
         }
         

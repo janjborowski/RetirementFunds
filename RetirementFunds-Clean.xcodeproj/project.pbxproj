@@ -33,9 +33,11 @@
 		F2EC004923C0D4FE000AFCDE /* NumberFormatter+Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */; };
 		F2EC004B23C0D6A4000AFCDE /* FinancialConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */; };
 		F2EC004D23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */; };
-		F2EC005023C0DA45000AFCDE /* IKZERetirementSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */; };
+		F2EC005023C0DA45000AFCDE /* IKZESavingsPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004F23C0DA45000AFCDE /* IKZESavingsPlan.swift */; };
 		F2EC005223C0DAFA000AFCDE /* IKZEResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */; };
 		F2EC005423C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005323C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift */; };
+		F2EC005723C32831000AFCDE /* IKESavingsPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005623C32831000AFCDE /* IKESavingsPlan.swift */; };
+		F2EC005923C3284E000AFCDE /* IKEResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005823C3284E000AFCDE /* IKEResult.swift */; };
 		F2FD6D15238A787200FDF5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D0F238A787200FDF5BF /* Assets.xcassets */; };
 		F2FD6D16238A787200FDF5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D10238A787200FDF5BF /* LaunchScreen.storyboard */; };
 		F2FD6D17238A787200FDF5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D12238A787200FDF5BF /* AppDelegate.swift */; };
@@ -100,9 +102,11 @@
 		F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Formatters.swift"; sourceTree = "<group>"; };
 		F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialConstants.swift; sourceTree = "<group>"; };
 		F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZECalculatorUseCase.swift; sourceTree = "<group>"; };
-		F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZERetirementSavings.swift; sourceTree = "<group>"; };
+		F2EC004F23C0DA45000AFCDE /* IKZESavingsPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZESavingsPlan.swift; sourceTree = "<group>"; };
 		F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEResult.swift; sourceTree = "<group>"; };
 		F2EC005323C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZECalculatorUseCaseTests.swift; sourceTree = "<group>"; };
+		F2EC005623C32831000AFCDE /* IKESavingsPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKESavingsPlan.swift; sourceTree = "<group>"; };
+		F2EC005823C3284E000AFCDE /* IKEResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKEResult.swift; sourceTree = "<group>"; };
 		F2FD6CF4238A74DC00FDF5BF /* RetirementFunds-Clean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RetirementFunds-Clean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FD6D0F238A787200FDF5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2FD6D11238A787200FDF5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,8 +171,8 @@
 		F207A4CB2393013D008793C0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC005523C3278A000AFCDE /* IKE */,
 				F2EC004E23C0DA23000AFCDE /* IKZE */,
-				F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */,
 				F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */,
 			);
 			path = Domain;
@@ -259,10 +263,20 @@
 			isa = PBXGroup;
 			children = (
 				F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */,
-				F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */,
+				F2EC004F23C0DA45000AFCDE /* IKZESavingsPlan.swift */,
 				F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */,
 			);
 			path = IKZE;
+			sourceTree = "<group>";
+		};
+		F2EC005523C3278A000AFCDE /* IKE */ = {
+			isa = PBXGroup;
+			children = (
+				F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */,
+				F2EC005623C32831000AFCDE /* IKESavingsPlan.swift */,
+				F2EC005823C3284E000AFCDE /* IKEResult.swift */,
+			);
+			path = IKE;
 			sourceTree = "<group>";
 		};
 		F2FD6CEB238A74DC00FDF5BF = {
@@ -474,14 +488,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F207A4C123927834008793C0 /* IKECalculatorInteractor.swift in Sources */,
+				F2EC005923C3284E000AFCDE /* IKEResult.swift in Sources */,
 				F2EC004923C0D4FE000AFCDE /* NumberFormatter+Formatters.swift in Sources */,
+				F2EC005723C32831000AFCDE /* IKESavingsPlan.swift in Sources */,
 				F2EC003C23C0B426000AFCDE /* IKZECalculatorPresenter.swift in Sources */,
 				F2EC003F23C0B485000AFCDE /* ErrorLabelRow.swift in Sources */,
 				F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */,
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
 				F2EC005223C0DAFA000AFCDE /* IKZEResult.swift in Sources */,
 				F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */,
-				F2EC005023C0DA45000AFCDE /* IKZERetirementSavings.swift in Sources */,
+				F2EC005023C0DA45000AFCDE /* IKZESavingsPlan.swift in Sources */,
 				F207A4A723926874008793C0 /* String+Localized.swift in Sources */,
 				F2AE367E23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift in Sources */,
 				F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */,

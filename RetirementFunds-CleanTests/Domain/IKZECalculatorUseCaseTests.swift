@@ -19,22 +19,22 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
 
     func test_computeFutureCapital_shouldReturnAnnualSavings_whenYearsToRetireIsZero() {
         // Arrange
-        let savings = IKZERetirementSavings(annualSavings: 1000, yearsToRetire: 0, rateOfReturn: 10, taxBracket: 0.18)
+        let plan = IKZESavingsPlan(annualSavings: 1000, yearsToRetire: 0, rateOfReturn: 10, taxBracket: 0.18)
         
         // Act
-        let result = sut.computeFutureCapital(for: savings)
+        let result = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(result.capital, savings.annualSavings)
+        XCTAssertEqual(result.capital, plan.annualSavings)
         XCTAssertEqual(result.taxReturn, 0)
     }
     
     func test_computeFutureCapital_shouldReturnSavingsWithInterestAndTaxReturn_whenYearsToRetireIsGreaterThanZero() {
         // Arrange
-        let savings = IKZERetirementSavings(annualSavings: 1000, yearsToRetire: 5, rateOfReturn: 5, taxBracket: 0.18)
+        let plan = IKZESavingsPlan(annualSavings: 1000, yearsToRetire: 5, rateOfReturn: 5, taxBracket: 0.18)
         
         // Act
-        let result = sut.computeFutureCapital(for: savings)
+        let result = sut.computeFutureCapital(for: plan)
         
         // Assert
         XCTAssertEqual(result.capital, 5801)

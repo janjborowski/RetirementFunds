@@ -73,7 +73,7 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
             let yearsToRetire = yearsToRetire else {
                 return
         }
-        let plan = RetirementPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn)
         let futureCapital = ikeCalculator.computeFutureCapital(for: plan)
         
         let displayedResult = earlyExit ? futureCapital.afterTaxation : futureCapital.beforeTaxation
