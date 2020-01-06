@@ -16,6 +16,8 @@
 "future_capital" = "Wynik";
 "early_exit" = "Wcześniejsza wypłata";
 
-"ike_limit_exceeded" = "Limit wpłaty przekroczony. Maksymalna wartość to: %@";
+"input_limit_exceeded" = "Limit wpłaty przekroczony. Maksymalna wartość to: %@";
+
+"tax_return" = "Zwrot podatku";
 
 "rate_of_return_explanation" = "To średnioroczna stopa zwrotu z całego portfela ponad inflację. Jej wartość zależy od alokacji aktywów w naszym portfelu a także od tego czy chcemy aktywnie czy pasywnie inwestować. Jeśli nie wiesz jakiej wartości użyć, poniżej znajdują się przykładowe wartości: \n\n2% - portfel bezpieczny, złożony w wiekszości z obligacji\n4% - zrównoważony portfel składający się z akcji i obligacji\n6% - agresywny portfel w większości składający się z akcji";

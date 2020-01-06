@@ -14,6 +14,9 @@ final class IKECalculatorPresenterTests: XCTestCase {
         }
         
         func show(futureCapital: Int) {}
+        func showInvalidAnnualInput(errorRow: ErrorLabelRow) {}
+        func showValidAnnualInput() {}
+        func load(rateOfReturn: Int) {}
         
     }
     
@@ -37,7 +40,7 @@ final class IKECalculatorPresenterTests: XCTestCase {
     
     func test_setUpPresenting_shouldReturnCorrectCurrencyFormatter() {
         // Act
-        sut.setUpPresenting()
+        sut.setUpPresenting(rateOfReturn: 0)
         
         // Assert
         let formattedNumber = viewControllerMock.savedCurrentFormatter?.string(for: 12345)
@@ -46,7 +49,7 @@ final class IKECalculatorPresenterTests: XCTestCase {
     
     func test_setUpPresenting_shouldReturnCorrectRateOfReturnFormatter() {
         // Act
-        sut.setUpPresenting()
+        sut.setUpPresenting(rateOfReturn: 0)
         
         // Assert
         let formattedNumber = viewControllerMock.savedRateOfReturnFormatter?.string(for: 11)

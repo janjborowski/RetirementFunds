@@ -7,7 +7,7 @@ protocol IKECalculatorViewControllerProtocol: AnyObject {
     func show(futureCapital: Int)
     
     func showValidAnnualInput()
-    func showInvalidAnnualInput(errorRow: LabelRow)
+    func showInvalidAnnualInput(errorRow: ErrorLabelRow)
 }
 
 final class IKECalculatorViewController: FormViewController {
@@ -48,7 +48,7 @@ final class IKECalculatorViewController: FormViewController {
             <<< IntRow() { row in
                 row.title = "years_to_retirement".localized
             }.cellUpdate { [weak self] (_, row) in
-                self?.interactor.update(yearsToRetirement: row.value)
+                self?.interactor.update(yearsToRetire: row.value)
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
@@ -122,7 +122,7 @@ extension IKECalculatorViewController: IKECalculatorViewControllerProtocol {
         errorRow.section?.remove(at: index)
     }
     
-    func showInvalidAnnualInput(errorRow: LabelRow) {
+    func showInvalidAnnualInput(errorRow: ErrorLabelRow) {
         guard let annualInputRow = find(intRow: .annualInput),
             form.rowBy(tag: RowTag.annualInputError.rawValue) == nil else {
                 return

@@ -7,6 +7,8 @@ protocol IKZECalculatorViewControllerProtocol: AnyObject {
     
     func showValidAnnualInput()
     func showInvalidAnnualInput(errorRow: ErrorLabelRow)
+    
+    func show(futureCapital: Int, taxReturn: Int)
 }
 
 final class IKZECalculatorViewController: FormViewController {
@@ -16,6 +18,7 @@ final class IKZECalculatorViewController: FormViewController {
         case annualInputError
         case rateOfReturn
         case futureCapital
+        case taxReturn
     }
     
     private let interactor: IKZECalculatorInteractorProtocol
@@ -38,7 +41,7 @@ final class IKZECalculatorViewController: FormViewController {
     }
     
     private func setUpForm() {
-        form +++ Section(RowTag.annualInput.rawValue)
+        form +++ Section()
             <<< IntRow(RowTag.annualInput.rawValue) { row in
                 row.title = "annual_input".localized
             }.cellUpdate { [weak self] (_, row) in
@@ -47,7 +50,7 @@ final class IKZECalculatorViewController: FormViewController {
             <<< IntRow() { row in
                 row.title = "years_to_retirement".localized
             }.cellUpdate { [weak self] (_, row) in
-                self?.interactor.update(yearsToRetirement: row.value)
+                self?.interactor.update(yearsToRetire: row.value)
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
@@ -59,6 +62,10 @@ final class IKZECalculatorViewController: FormViewController {
         form +++ Section()
             <<< IntRow(RowTag.futureCapital.rawValue) { row in
                 row.title = "future_capital".localized
+                row.cell.textField.isUserInteractionEnabled = false
+            }
+            <<< IntRow(RowTag.taxReturn.rawValue) { row in
+                row.title = "tax_return".localized
                 row.cell.textField.isUserInteractionEnabled = false
             }
     }
@@ -76,35 +83,22 @@ final class IKZECalculatorViewController: FormViewController {
 extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
     
     func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter) {
-        load(currencyFormatter: currencyFormatter)
-        load(rateOfReturnFormatter: rateOfReturnFormatter)
+        load(formatter: currencyFormatter, in: .annualInput)
+        load(formatter: currencyFormatter, in: .futureCapital)
+        load(formatter: currencyFormatter, in: .taxReturn)
+        load(formatter: rateOfReturnFormatter, in: .rateOfReturn)
     }
     
-    private func load(currencyFormatter: Formatter) {
-        guard let annualInputRow = find(intRow: .annualInput),
-            let futureCapitalRow = find(intRow: .futureCapital) else {
-                return
-        }
-        
-        annualInputRow.formatter = currencyFormatter
-        futureCapitalRow.formatter = currencyFormatter
-    }
-    
-    private func load(rateOfReturnFormatter: Formatter) {
-        guard let rateOfReturnRow = find(intRow: .rateOfReturn) else {
+    private func load(formatter: Formatter, in rowTag: RowTag) {
+        guard let row = find(intRow: rowTag) else {
             return
         }
         
-        rateOfReturnRow.formatter = rateOfReturnFormatter
+        row.formatter = formatter
     }
     
     func load(rateOfReturn: Int) {
-        guard let rateOfReturnRow = find(intRow: .rateOfReturn) else {
-            return
-        }
-        
-        rateOfReturnRow.value = rateOfReturn
-        rateOfReturnRow.reload()
+        reload(intRow: .rateOfReturn, with: rateOfReturn)
     }
     
     func showValidAnnualInput() {
@@ -126,6 +120,11 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
         try? annualInputRow.section?.insert(row: errorRow, after: annualInputRow)
     }
     
+    func show(futureCapital: Int, taxReturn: Int) {
+        reload(intRow: .futureCapital, with: futureCapital)
+        reload(intRow: .taxReturn, with: taxReturn)
+    }
+    
     private func find<T: RowType>(row tag: RowTag) -> T? {
         return form.rowBy(tag: tag.rawValue)
     }
@@ -136,6 +135,15 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
     
     private func find(labelRow tag: RowTag) -> LabelRow? {
         return find(row: tag)
+    }
+    
+    private func reload(intRow tag: RowTag, with value: Int) {
+        guard let row = find(intRow: tag) else {
+            return
+        }
+        
+        row.value = value
+        row.reload()
     }
     
 }

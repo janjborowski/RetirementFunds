@@ -5,6 +5,8 @@ protocol IKZECalculatorPresenterProtocol {
     
     func showValidAnnualInput()
     func showInvalidAnnualInput(limit: Int)
+    
+    func show(futureCapital: Int, taxReturn: Int)
 }
 
 final class IKZECalculatorPresenter: IKZECalculatorPresenterProtocol {
@@ -26,9 +28,13 @@ final class IKZECalculatorPresenter: IKZECalculatorPresenterProtocol {
     func showInvalidAnnualInput(limit: Int) {
         let errorRow = ErrorLabelRow() {
             let limitFormatted = NumberFormatter.currencyFormatter.string(for: limit) ?? ""
-            $0.title = String(format: "ike_limit_exceeded".localized, limitFormatted)
+            $0.title = String(format: "input_limit_exceeded".localized, limitFormatted)
         }
         viewController?.showInvalidAnnualInput(errorRow: errorRow)
+    }
+    
+    func show(futureCapital: Int, taxReturn: Int) {
+        viewController?.show(futureCapital: futureCapital, taxReturn: taxReturn)
     }
     
 }

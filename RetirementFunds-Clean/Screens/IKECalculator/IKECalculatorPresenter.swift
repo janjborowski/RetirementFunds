@@ -30,15 +30,9 @@ final class IKECalculatorPresenter: IKECalculatorPresenterProtocol {
     }
     
     func showInvalidAnnualInput(limit: Int) {
-        let errorRow = LabelRow() {
+        let errorRow = ErrorLabelRow() {
             let limitFormatted = NumberFormatter.currencyFormatter.string(for: limit) ?? ""
-            $0.title = String(format: "ike_limit_exceeded".localized, limitFormatted)
-            $0.cell.height = { 35 }
-            $0.cell.backgroundColor = .red
-            $0.cell.textLabel?.numberOfLines = 0
-            $0.cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .caption1)
-        }.cellUpdate { (cell, row) in
-            cell.textLabel?.textColor = .white
+            $0.title = String(format: "input_limit_exceeded".localized, limitFormatted)
         }
         viewController?.showInvalidAnnualInput(errorRow: errorRow)
     }

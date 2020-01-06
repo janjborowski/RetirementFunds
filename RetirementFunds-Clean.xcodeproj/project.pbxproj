@@ -32,6 +32,10 @@
 		F2EC004123C0D035000AFCDE /* IKZECalculatorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004023C0D035000AFCDE /* IKZECalculatorRouter.swift */; };
 		F2EC004923C0D4FE000AFCDE /* NumberFormatter+Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */; };
 		F2EC004B23C0D6A4000AFCDE /* FinancialConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */; };
+		F2EC004D23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */; };
+		F2EC005023C0DA45000AFCDE /* IKZERetirementSavings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */; };
+		F2EC005223C0DAFA000AFCDE /* IKZEResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */; };
+		F2EC005423C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EC005323C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift */; };
 		F2FD6D15238A787200FDF5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D0F238A787200FDF5BF /* Assets.xcassets */; };
 		F2FD6D16238A787200FDF5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2FD6D10238A787200FDF5BF /* LaunchScreen.storyboard */; };
 		F2FD6D17238A787200FDF5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FD6D12238A787200FDF5BF /* AppDelegate.swift */; };
@@ -95,6 +99,10 @@
 		F2EC004023C0D035000AFCDE /* IKZECalculatorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZECalculatorRouter.swift; sourceTree = "<group>"; };
 		F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+Formatters.swift"; sourceTree = "<group>"; };
 		F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialConstants.swift; sourceTree = "<group>"; };
+		F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZECalculatorUseCase.swift; sourceTree = "<group>"; };
+		F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZERetirementSavings.swift; sourceTree = "<group>"; };
+		F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEResult.swift; sourceTree = "<group>"; };
+		F2EC005323C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZECalculatorUseCaseTests.swift; sourceTree = "<group>"; };
 		F2FD6CF4238A74DC00FDF5BF /* RetirementFunds-Clean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RetirementFunds-Clean.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2FD6D0F238A787200FDF5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F2FD6D11238A787200FDF5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -159,6 +167,7 @@
 		F207A4CB2393013D008793C0 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F2EC004E23C0DA23000AFCDE /* IKZE */,
 				F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */,
 				F2EC004A23C0D6A4000AFCDE /* FinancialConstants.swift */,
 			);
@@ -169,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */,
+				F2EC005323C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -243,6 +253,16 @@
 				F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		F2EC004E23C0DA23000AFCDE /* IKZE */ = {
+			isa = PBXGroup;
+			children = (
+				F2EC004C23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift */,
+				F2EC004F23C0DA45000AFCDE /* IKZERetirementSavings.swift */,
+				F2EC005123C0DAFA000AFCDE /* IKZEResult.swift */,
+			);
+			path = IKZE;
 			sourceTree = "<group>";
 		};
 		F2FD6CEB238A74DC00FDF5BF = {
@@ -444,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F266AEE923BA801100DF4DFB /* IKECalculatorPresenterTests.swift in Sources */,
+				F2EC005423C31B12000AFCDE /* IKZECalculatorUseCaseTests.swift in Sources */,
 				F207A4E423930649008793C0 /* IKECalculatorUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,7 +479,9 @@
 				F2EC003F23C0B485000AFCDE /* ErrorLabelRow.swift in Sources */,
 				F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */,
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
+				F2EC005223C0DAFA000AFCDE /* IKZEResult.swift in Sources */,
 				F207A4BA2392738D008793C0 /* IKECalculatorViewController.swift in Sources */,
+				F2EC005023C0DA45000AFCDE /* IKZERetirementSavings.swift in Sources */,
 				F207A4A723926874008793C0 /* String+Localized.swift in Sources */,
 				F2AE367E23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift in Sources */,
 				F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */,
@@ -467,6 +490,7 @@
 				F207A4BF23927575008793C0 /* OptionsListRouter.swift in Sources */,
 				F2EC004B23C0D6A4000AFCDE /* FinancialConstants.swift in Sources */,
 				F2AE368023A4E756006D4BE6 /* IKECalculatorRouter.swift in Sources */,
+				F2EC004D23C0D9F1000AFCDE /* IKZECalculatorUseCase.swift in Sources */,
 				F266AEEB23BA82C100DF4DFB /* Locale+Only.swift in Sources */,
 				F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */,
 				F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */,

@@ -36,9 +36,9 @@ final class DependencyContainer {
     
     func ikzeCalculatorProvider() -> UIViewController {
         let router = IKZECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
-//        let useCase = IKECalculatorUseCase()
+        let useCase = IKZECalculatorUseCase()
         let presenter = IKZECalculatorPresenter()
-        let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, basicRateOfReturn: constants.basicRateOfReturn)//, ikeCalculator: useCase)
+        let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, ikzeCalculator: useCase, basicRateOfReturn: constants.basicRateOfReturn)
         let viewController = IKZECalculatorViewController(interactor: interactor)
         
         presenter.viewController = viewController
