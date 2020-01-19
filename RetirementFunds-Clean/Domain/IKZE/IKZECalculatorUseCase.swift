@@ -6,6 +6,12 @@ protocol IKZECalculatorUseCaseProtocol {
 
 final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
     
+    private let financialConstants: FinancialConstants
+    
+    init(financialConstants: FinancialConstants) {
+        self.financialConstants = financialConstants
+    }
+    
     func computeFutureCapital(for plan: IKZESavingsPlan) -> IKZEResult {
         let annualSavings = Decimal(plan.annualSavings)
         
@@ -20,6 +26,8 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
         for _ in 0..<plan.yearsToRetire {
             totalCapital = (totalCapital + annualSavings) * capitalGrowth
         }
+        
+        totalCapital *= (1 - financialConstants.flatRateIncomeTax)
         
         return IKZEResult(capital: totalCapital, taxReturn: taxReturn)
     }

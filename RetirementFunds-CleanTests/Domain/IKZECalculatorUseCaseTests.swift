@@ -8,7 +8,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        sut = IKZECalculatorUseCase()
+        sut = IKZECalculatorUseCase(financialConstants: .default)
     }
 
     override func tearDown() {
@@ -37,7 +37,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         let result = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(result.capital, 5801)
+        XCTAssertEqual(result.capital, 5221)
         XCTAssertEqual(result.taxReturn, 900)
     }
     
