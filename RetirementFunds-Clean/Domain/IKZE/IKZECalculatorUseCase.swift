@@ -27,9 +27,39 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
             totalCapital = (totalCapital + annualSavings) * capitalGrowth
         }
         
-        totalCapital *= (1 - financialConstants.flatRateIncomeTax)
+        let finalCapital = computeExitCapital(capital: totalCapital, earlyExit: plan.earlyExit)
+        return IKZEResult(
+            capital: finalCapital,
+            taxReturn: taxReturn
+        )
+    }
+    
+    private func computeExitCapital(capital: Decimal, earlyExit: IKZESavingsPlan.EarlyExitTax?) -> Decimal {
+        guard let earlyExit = earlyExit else {
+            return capital * (1 - financialConstants.flatRateIncomeTax)
+        }
         
-        return IKZEResult(capital: totalCapital, taxReturn: taxReturn)
+        return computeEarlyExitCapital(capital: capital, earlyExit: earlyExit)
+    }
+    
+    private func computeEarlyExitCapital(capital: Decimal, earlyExit: IKZESavingsPlan.EarlyExitTax) -> Decimal {
+        switch earlyExit {
+        case .flatRate(let flatRate):
+            return capital * (1 - flatRate)
+        case .progressiveRate(basicRate: let basicRate, basicRateLimit: let basicRateLimit, excessRate: let excessRate, yearToDateIncome: let income):
+            let totalYearToDateIncome = capital + income
+            if totalYearToDateIncome <= basicRateLimit {
+                return capital * (1 - basicRate)
+            } else {
+                if income < basicRateLimit {
+                    let excess = totalYearToDateIncome - basicRateLimit
+                    let upToLimitCapital = capital - excess
+                    return upToLimitCapital * (1 - basicRate) + excess * (1 - excessRate)
+                } else {
+                    return capital * (1 - excessRate)
+                }
+            }
+        }
     }
     
 }

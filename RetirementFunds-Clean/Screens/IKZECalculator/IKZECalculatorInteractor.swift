@@ -81,7 +81,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
                 return
         }
         
-        let plan = IKZESavingsPlan(annualSavings: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn, taxBracket: taxBracket)
+        let plan = IKZESavingsPlan(annualSavings: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn, taxBracket: taxBracket, earlyExit: nil)
         let result = ikzeCalculator.computeFutureCapital(for: plan)
         presenter.show(futureCapital: result.capital, taxReturn: result.taxReturn)
     }
