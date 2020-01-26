@@ -40,13 +40,13 @@ final class IKECalculatorViewController: FormViewController {
     
     private func setUpForm() {
         form +++ Section()
-            <<< IntRow(RowTag.annualInput.rawValue) { row in
-                row.title = "annual_input".localized
+            <<< IntRow(RowTag.annualInput.rawValue) {
+                $0.title = "annual_input".localized
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(annualInput: row.value)
             }
-            <<< IntRow() { row in
-                row.title = "years_to_retirement".localized
+            <<< IntRow() {
+                $0.title = "years_to_retirement".localized
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(yearsToRetire: row.value)
             }
@@ -63,9 +63,9 @@ final class IKECalculatorViewController: FormViewController {
             }
         
         form +++ Section()
-            <<< IntRow(RowTag.futureCapital.rawValue) { row in
-                row.title = "future_capital".localized
-                row.cell.textField.isUserInteractionEnabled = false
+            <<< IntRow(RowTag.futureCapital.rawValue) {
+                $0.title = "future_capital".localized
+                $0.cell.textField.isUserInteractionEnabled = false
             }
     }
     

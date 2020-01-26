@@ -11,9 +11,6 @@ final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
     
     weak var controller: IKZEEarlyExitViewControllerProtocol?
     
-
-//    currencyFormatter: NumberFormatter.currencyFormatter,
-    
     func showOptions() {
         controller?.showOptions()
     }

@@ -56,8 +56,8 @@ final class IKZEEarlyExitViewController: FormViewController {
             }
         
         form +++ Section()
-            <<< IntRow(RowTag.yearToDateIncome.rawValue) { row in
-                row.title = "year_to_date_income".localized
+            <<< IntRow(RowTag.yearToDateIncome.rawValue) {
+                $0.title = "year_to_date_income".localized
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(yearToDateIncome: row.value)
             }
