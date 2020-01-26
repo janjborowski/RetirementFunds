@@ -4,7 +4,7 @@ import UIKit
 protocol IKZEEarlyExitRouterProtocol {
     
     func cancel()
-    func save(earlyExitTax: IKZESavingsPlan.EarlyExitTax?)
+    func save(earlyExitTax: IKZEEarlyExitTax?)
     
 }
 
@@ -17,7 +17,7 @@ final class IKZEEarlyExitRouter: IKZEEarlyExitRouterProtocol {
         currentController?.dismiss(animated: true, completion: nil)
     }
     
-    func save(earlyExitTax: IKZESavingsPlan.EarlyExitTax?) {
+    func save(earlyExitTax: IKZEEarlyExitTax?) {
         delegate?.save(earlyExit: earlyExitTax)
         currentController?.dismiss(animated: true, completion: nil)
     }

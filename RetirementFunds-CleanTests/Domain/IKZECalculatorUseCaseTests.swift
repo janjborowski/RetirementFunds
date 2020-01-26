@@ -112,7 +112,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         XCTAssertEqual(result.taxReturn, 900)
     }
     
-    private func createSavingsPlan(with earlyExit: IKZESavingsPlan.EarlyExitTax) -> IKZESavingsPlan {
+    private func createSavingsPlan(with earlyExit: IKZEEarlyExitTax) -> IKZESavingsPlan {
         return IKZESavingsPlan(
             annualSavings: 1000,
             yearsToRetire: 5,

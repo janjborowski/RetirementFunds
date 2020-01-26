@@ -6,7 +6,7 @@ protocol IKZECalculatorPresenterProtocol {
     
     func showValidAnnualInput()
     func showInvalidAnnualInput(limit: Int)
-    func show(earlyExitTax: IKZESavingsPlan.EarlyExitTax?)
+    func show(earlyExitTax: IKZEEarlyExitTax?)
     
     func show(futureCapital: Int, taxReturn: Int)
 }
@@ -36,7 +36,7 @@ final class IKZECalculatorPresenter: IKZECalculatorPresenterProtocol {
         viewController?.showInvalidAnnualInput(errorRow: errorRow)
     }
     
-    func show(earlyExitTax: IKZESavingsPlan.EarlyExitTax?) {
+    func show(earlyExitTax: IKZEEarlyExitTax?) {
         guard let earlyExitTax = earlyExitTax else {
             viewController?.show(earlyExitDescription: "no".localized)
             return

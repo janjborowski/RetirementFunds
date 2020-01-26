@@ -23,7 +23,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     private var yearsToRetire: Int?
     private var taxBracket: Decimal?
     private var rateOfReturn: Int
-    private var earlyExitTax: IKZESavingsPlan.EarlyExitTax?
+    private var earlyExitTax: IKZEEarlyExitTax?
     
     init(router: IKZECalculatorRouterProtocol, presenter: IKZECalculatorPresenterProtocol, ikzeCalculator: IKZECalculatorUseCaseProtocol, constants: FinancialConstants) {
         self.router = router
@@ -102,7 +102,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
 
 extension IKZECalculatorInteractor: IKZECalculatorEarlyExitConsumer {
     
-    func save(earlyExit: IKZESavingsPlan.EarlyExitTax?) {
+    func save(earlyExit: IKZEEarlyExitTax?) {
         self.earlyExitTax = earlyExit
         recalculateIfPossible()
         presenter.show(earlyExitTax: earlyExitTax)

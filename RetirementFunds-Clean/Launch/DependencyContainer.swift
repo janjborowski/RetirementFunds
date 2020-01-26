@@ -57,7 +57,7 @@ final class DependencyContainer {
         return UINavigationController(rootViewController: viewController)
     }
     
-    func ikzeEarlyExitProvider(earlyExitTax: IKZESavingsPlan.EarlyExitTax?, consumer: IKZECalculatorEarlyExitConsumer) -> UIViewController {
+    func ikzeEarlyExitProvider(earlyExitTax: IKZEEarlyExitTax?, consumer: IKZECalculatorEarlyExitConsumer) -> UIViewController {
         let presenter = IKZEEarlyExitPresenter()
         let router = IKZEEarlyExitRouter()
         let interactor = IKZEEarlyExitInteractor(

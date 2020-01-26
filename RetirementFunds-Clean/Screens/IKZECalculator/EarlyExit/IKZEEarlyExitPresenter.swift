@@ -3,8 +3,8 @@ import Foundation
 protocol IKZEEarlyExitPresenterProtocol {
     func showOptions()
     func hideOptions()
-    func set(options: [IKZESavingsPlan.EarlyExitTax])
-    func show(earlyExit: IKZESavingsPlan.EarlyExitTax?)
+    func set(options: [IKZEEarlyExitTax])
+    func show(earlyExit: IKZEEarlyExitTax?)
 }
 
 final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
@@ -19,12 +19,12 @@ final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
         controller?.hideOptions()
     }
     
-    func set(options: [IKZESavingsPlan.EarlyExitTax]) {
+    func set(options: [IKZEEarlyExitTax]) {
         let texts = options.map(mapToText)
         controller?.set(options: texts)
     }
     
-    func show(earlyExit: IKZESavingsPlan.EarlyExitTax?) {
+    func show(earlyExit: IKZEEarlyExitTax?) {
         guard let earlyExit = earlyExit else {
             controller?.showNoEarlyExit()
             return
@@ -39,7 +39,7 @@ final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
         }
     }
     
-    private func mapToText(_ earlyExitTax: IKZESavingsPlan.EarlyExitTax) -> String {
+    private func mapToText(_ earlyExitTax: IKZEEarlyExitTax) -> String {
         switch earlyExitTax {
         case .flatRate:
             return "flat_tax".localized

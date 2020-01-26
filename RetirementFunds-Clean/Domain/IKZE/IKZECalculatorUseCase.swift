@@ -34,7 +34,7 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
         )
     }
     
-    private func computeExitCapital(capital: Decimal, earlyExit: IKZESavingsPlan.EarlyExitTax?) -> Decimal {
+    private func computeExitCapital(capital: Decimal, earlyExit: IKZEEarlyExitTax?) -> Decimal {
         guard let earlyExit = earlyExit else {
             return capital * (1 - financialConstants.flatRateIncomeTax)
         }
@@ -42,7 +42,7 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
         return computeEarlyExitCapital(capital: capital, earlyExit: earlyExit)
     }
     
-    private func computeEarlyExitCapital(capital: Decimal, earlyExit: IKZESavingsPlan.EarlyExitTax) -> Decimal {
+    private func computeEarlyExitCapital(capital: Decimal, earlyExit: IKZEEarlyExitTax) -> Decimal {
         switch earlyExit {
         case .flatRate(let flatRate):
             return capital * (1 - flatRate)

@@ -19,11 +19,11 @@ final class IKZEEarlyExitInteractor: IKZEEarlyExitInteractorProtocol {
     private let presenter: IKZEEarlyExitPresenterProtocol
     private let router: IKZEEarlyExitRouterProtocol
     
-    private let options = IKZESavingsPlan.EarlyExitTax.dummyOptions
+    private let options = IKZEEarlyExitTax.dummyOptions
     
-    private var earlyExitTax: IKZESavingsPlan.EarlyExitTax?
+    private var earlyExitTax: IKZEEarlyExitTax?
     
-    init(presenter: IKZEEarlyExitPresenterProtocol, router: IKZEEarlyExitRouterProtocol, financialConstants: FinancialConstants, earlyExitTax: IKZESavingsPlan.EarlyExitTax?) {
+    init(presenter: IKZEEarlyExitPresenterProtocol, router: IKZEEarlyExitRouterProtocol, financialConstants: FinancialConstants, earlyExitTax: IKZEEarlyExitTax?) {
         self.presenter = presenter
         self.router = router
         self.constants = financialConstants
@@ -63,7 +63,7 @@ final class IKZEEarlyExitInteractor: IKZEEarlyExitInteractorProtocol {
             let yearToDateIncome = yearToDateIncome else {
             return
         }
-        if case IKZESavingsPlan.EarlyExitTax.progressiveRate(basicRate: let basicRate, basicRateLimit: let limit, excessRate: let excessRate, yearToDateIncome: _) = earlyExitTax {
+        if case IKZEEarlyExitTax.progressiveRate(basicRate: let basicRate, basicRateLimit: let limit, excessRate: let excessRate, yearToDateIncome: _) = earlyExitTax {
             self.earlyExitTax = .progressiveRate(
                 basicRate: basicRate,
                 basicRateLimit: limit,
@@ -83,9 +83,9 @@ final class IKZEEarlyExitInteractor: IKZEEarlyExitInteractorProtocol {
     
 }
 
-private extension IKZESavingsPlan.EarlyExitTax {
+private extension IKZEEarlyExitTax {
     
-    static var dummyOptions: [IKZESavingsPlan.EarlyExitTax] {
+    static var dummyOptions: [IKZEEarlyExitTax] {
         return [
             .flatRate(0),
             .progressiveRate(basicRate: 0, basicRateLimit: 0, excessRate: 0, yearToDateIncome: 0)
