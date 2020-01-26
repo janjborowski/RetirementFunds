@@ -36,6 +36,8 @@ final class IKZEEarlyExitViewController: FormViewController {
         setUpForm()
         setUpBarButtons()
         interactor.setUp()
+        
+        title = "early_exit".localized
     }
     
     private func setUpForm() {
