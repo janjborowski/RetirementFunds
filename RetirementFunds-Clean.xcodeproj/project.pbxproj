@@ -17,6 +17,11 @@
 		F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4C82392FD3D008793C0 /* OptionsListPresenter.swift */; };
 		F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4CC2393014E008793C0 /* IKECalculatorUseCase.swift */; };
 		F207A4E423930649008793C0 /* IKECalculatorUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */; };
+		F226D9F023DD9B09001F7BFE /* Decimal+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = F226D9EF23DD9B09001F7BFE /* Decimal+Int.swift */; };
+		F233055323D4580A00E7587F /* IKZEEarlyExitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233055223D4580A00E7587F /* IKZEEarlyExitViewController.swift */; };
+		F233055623D4BF3600E7587F /* IKZEEarlyExitInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233055523D4BF3600E7587F /* IKZEEarlyExitInteractor.swift */; };
+		F233055823D4C11C00E7587F /* IKZEEarlyExitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233055723D4C11C00E7587F /* IKZEEarlyExitRouter.swift */; };
+		F233055A23D4C6E300E7587F /* IKZEEarlyExitPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233055923D4C6E300E7587F /* IKZEEarlyExitPresenter.swift */; };
 		F233F048239264D50078114F /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F233F047239264D50078114F /* DependencyContainer.swift */; };
 		F233F04B2392667E0078114F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F233F04D2392667E0078114F /* Localizable.strings */; };
 		F266AEE923BA801100DF4DFB /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266AEE823BA801100DF4DFB /* NumberFormatterTests.swift */; };
@@ -86,6 +91,11 @@
 		F207A4D42393060B008793C0 /* IKECalculatorUseCaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IKECalculatorUseCaseTests.swift; sourceTree = "<group>"; };
 		F207A4DA23930638008793C0 /* RetirementFunds-CleanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RetirementFunds-CleanTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F207A4DE23930638008793C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F226D9EF23DD9B09001F7BFE /* Decimal+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Int.swift"; sourceTree = "<group>"; };
+		F233055223D4580A00E7587F /* IKZEEarlyExitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEEarlyExitViewController.swift; sourceTree = "<group>"; };
+		F233055523D4BF3600E7587F /* IKZEEarlyExitInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEEarlyExitInteractor.swift; sourceTree = "<group>"; };
+		F233055723D4C11C00E7587F /* IKZEEarlyExitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEEarlyExitRouter.swift; sourceTree = "<group>"; };
+		F233055923D4C6E300E7587F /* IKZEEarlyExitPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKZEEarlyExitPresenter.swift; sourceTree = "<group>"; };
 		F233F047239264D50078114F /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		F233F04C2392667E0078114F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F266AEE823BA801100DF4DFB /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
@@ -197,6 +207,17 @@
 			path = "RetirementFunds-CleanTests";
 			sourceTree = "<group>";
 		};
+		F233055123D457E500E7587F /* EarlyExit */ = {
+			isa = PBXGroup;
+			children = (
+				F233055223D4580A00E7587F /* IKZEEarlyExitViewController.swift */,
+				F233055523D4BF3600E7587F /* IKZEEarlyExitInteractor.swift */,
+				F233055923D4C6E300E7587F /* IKZEEarlyExitPresenter.swift */,
+				F233055723D4C11C00E7587F /* IKZEEarlyExitRouter.swift */,
+			);
+			path = EarlyExit;
+			sourceTree = "<group>";
+		};
 		F233F046239264B10078114F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +256,7 @@
 		F2EC003623C0B060000AFCDE /* IKZECalculator */ = {
 			isa = PBXGroup;
 			children = (
+				F233055123D457E500E7587F /* EarlyExit */,
 				F2EC003723C0B08B000AFCDE /* IKZECalculatorViewController.swift */,
 				F2EC003923C0B1FC000AFCDE /* IKZECalculatorInteractor.swift */,
 				F2EC003B23C0B426000AFCDE /* IKZECalculatorPresenter.swift */,
@@ -255,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				F2EC004823C0D4FE000AFCDE /* NumberFormatter+Formatters.swift */,
+				F226D9EF23DD9B09001F7BFE /* Decimal+Int.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -492,6 +515,7 @@
 				F2EC004923C0D4FE000AFCDE /* NumberFormatter+Formatters.swift in Sources */,
 				F2EC005723C32831000AFCDE /* IKESavingsPlan.swift in Sources */,
 				F2EC003C23C0B426000AFCDE /* IKZECalculatorPresenter.swift in Sources */,
+				F233055323D4580A00E7587F /* IKZEEarlyExitViewController.swift in Sources */,
 				F2EC003F23C0B485000AFCDE /* ErrorLabelRow.swift in Sources */,
 				F207A4C92392FD3D008793C0 /* OptionsListPresenter.swift in Sources */,
 				F233F048239264D50078114F /* DependencyContainer.swift in Sources */,
@@ -510,12 +534,16 @@
 				F266AEEB23BA82C100DF4DFB /* Locale+Only.swift in Sources */,
 				F207A4CD2393014E008793C0 /* IKECalculatorUseCase.swift in Sources */,
 				F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */,
+				F233055623D4BF3600E7587F /* IKZEEarlyExitInteractor.swift in Sources */,
 				F2FD6D1E238A7A7500FDF5BF /* OptionsListCell.swift in Sources */,
 				F2FD6D19238A787200FDF5BF /* SceneDelegate.swift in Sources */,
 				F2FD6D1C238A7A6500FDF5BF /* OptionsListViewController.swift in Sources */,
 				F207A4C72392FD1A008793C0 /* OptionsListInteractor.swift in Sources */,
 				F2EC003823C0B08B000AFCDE /* IKZECalculatorViewController.swift in Sources */,
 				F2FD6D17238A787200FDF5BF /* AppDelegate.swift in Sources */,
+				F226D9F023DD9B09001F7BFE /* Decimal+Int.swift in Sources */,
+				F233055A23D4C6E300E7587F /* IKZEEarlyExitPresenter.swift in Sources */,
+				F233055823D4C11C00E7587F /* IKZEEarlyExitRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

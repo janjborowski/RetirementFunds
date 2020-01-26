@@ -22,7 +22,7 @@ struct FinancialConstants {
             taxBrackets: [
                 .init(value: 0.17, name: "first_bracket".localized),
                 .init(value: 0.32, name: "second_bracket".localized),
-                .init(value: 0.19, name: "flat tax".localized)
+                .init(value: 0.19, name: "flat_tax".localized)
             ]
         )
     }

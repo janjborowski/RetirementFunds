@@ -3,6 +3,7 @@ import Foundation
 protocol IKZECalculatorInteractorProtocol {
     func setUp()
     func showRateOfReturnExplanation()
+    func showEarlyExitPicker()
     func update(annualInput: Int?)
     func update(yearsToRetire: Int?)
     func update(rateOfReturn: Int?)
@@ -22,6 +23,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     private var yearsToRetire: Int?
     private var taxBracket: Decimal?
     private var rateOfReturn: Int
+    private var earlyExitTax: IKZESavingsPlan.EarlyExitTax?
     
     init(router: IKZECalculatorRouterProtocol, presenter: IKZECalculatorPresenterProtocol, ikzeCalculator: IKZECalculatorUseCaseProtocol, constants: FinancialConstants) {
         self.router = router
@@ -37,6 +39,10 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     
     func showRateOfReturnExplanation() {
         router.showRateOfReturnExplanation()
+    }
+    
+    func showEarlyExitPicker() {
+        router.showEarlyExitPicker(earlyExitTax: earlyExitTax, consumer: self)
     }
     
     func update(annualInput: Int?) {
@@ -81,9 +87,25 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
                 return
         }
         
-        let plan = IKZESavingsPlan(annualSavings: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn, taxBracket: taxBracket, earlyExit: nil)
+        let plan = IKZESavingsPlan(
+            annualSavings: annualInput,
+            yearsToRetire: yearsToRetire,
+            rateOfReturn: rateOfReturn,
+            taxBracket: taxBracket,
+            earlyExit: earlyExitTax
+        )
         let result = ikzeCalculator.computeFutureCapital(for: plan)
         presenter.show(futureCapital: result.capital, taxReturn: result.taxReturn)
+    }
+    
+}
+
+extension IKZECalculatorInteractor: IKZECalculatorEarlyExitConsumer {
+    
+    func save(earlyExit: IKZESavingsPlan.EarlyExitTax?) {
+        self.earlyExitTax = earlyExit
+        recalculateIfPossible()
+        presenter.show(earlyExitTax: earlyExitTax)
     }
     
 }

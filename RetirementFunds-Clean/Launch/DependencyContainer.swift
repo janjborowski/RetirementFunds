@@ -1,6 +1,8 @@
 import UIKit
 import Swinject
 
+typealias ViewControllerProvider = () -> UIViewController
+
 final class DependencyContainer {
     
     private let container = Container()
@@ -35,7 +37,10 @@ final class DependencyContainer {
     }
     
     func ikzeCalculatorProvider() -> UIViewController {
-        let router = IKZECalculatorRouter(rateOfReturnControllerProvider: rateOfReturnExplanationProvider)
+        let router = IKZECalculatorRouter(
+            rateOfReturnControllerProvider: rateOfReturnExplanationProvider,
+            earlyExitControllerProvider: ikzeEarlyExitProvider
+        )
         let useCase = IKZECalculatorUseCase(financialConstants: constants)
         let presenter = IKZECalculatorPresenter()
         let interactor = IKZECalculatorInteractor(router: router, presenter: presenter, ikzeCalculator: useCase, constants: constants)
@@ -49,6 +54,24 @@ final class DependencyContainer {
     
     func rateOfReturnExplanationProvider() -> UIViewController {
         let viewController = RateOfReturnExplanationViewController()
+        return UINavigationController(rootViewController: viewController)
+    }
+    
+    func ikzeEarlyExitProvider(earlyExitTax: IKZESavingsPlan.EarlyExitTax?, consumer: IKZECalculatorEarlyExitConsumer) -> UIViewController {
+        let presenter = IKZEEarlyExitPresenter()
+        let router = IKZEEarlyExitRouter()
+        let interactor = IKZEEarlyExitInteractor(
+            presenter: presenter,
+            router: router,
+            financialConstants: .default,
+            earlyExitTax: earlyExitTax
+        )
+        let viewController = IKZEEarlyExitViewController(interactor: interactor)
+        
+        presenter.controller = viewController
+        router.delegate = consumer
+        router.currentController = viewController
+        
         return UINavigationController(rootViewController: viewController)
     }
     

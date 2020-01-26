@@ -8,6 +8,7 @@ protocol IKZECalculatorViewControllerProtocol: AnyObject {
     
     func showValidAnnualInput()
     func showInvalidAnnualInput(errorRow: ErrorLabelRow)
+    func show(earlyExitDescription: String)
     
     func show(futureCapital: Int, taxReturn: Int)
 }
@@ -19,6 +20,7 @@ final class IKZECalculatorViewController: FormViewController {
         case annualInputError
         case taxBrackets
         case rateOfReturn
+        case earlyExit
         case futureCapital
         case taxReturn
     }
@@ -66,6 +68,14 @@ final class IKZECalculatorViewController: FormViewController {
                 $0.cell.accessoryType = .detailButton
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(rateOfReturn: row.value)
+            }
+            <<< LabelRow(RowTag.earlyExit.rawValue) {
+                $0.title = "early_exit".localized
+                $0.value = "no".localized
+                $0.cell.accessoryType = .disclosureIndicator
+            }
+            .onCellSelection { [weak self] (_, _) in
+                self?.interactor.showEarlyExitPicker()
             }
         
         form +++ Section()
@@ -136,6 +146,12 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
         
         errorRow.tag = RowTag.annualInputError.rawValue
         try? annualInputRow.section?.insert(row: errorRow, after: annualInputRow)
+    }
+    
+    func show(earlyExitDescription: String) {
+        let earlyExitRow: LabelRow? = find(row: .earlyExit)
+        earlyExitRow?.value = earlyExitDescription
+        earlyExitRow?.reload()
     }
     
     func show(futureCapital: Int, taxReturn: Int) {
