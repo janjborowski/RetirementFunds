@@ -3,13 +3,16 @@ import Foundation
 protocol IKZEEarlyExitPresenterProtocol {
     func showOptions()
     func hideOptions()
-    func set(options: [IKZEEarlyExitTax])
+    func setUpPresenting(options: [IKZEEarlyExitTax])
     func show(earlyExit: IKZEEarlyExitTax?)
 }
 
 final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
     
     weak var controller: IKZEEarlyExitViewControllerProtocol?
+    
+
+//    currencyFormatter: NumberFormatter.currencyFormatter,
     
     func showOptions() {
         controller?.showOptions()
@@ -19,9 +22,11 @@ final class IKZEEarlyExitPresenter: IKZEEarlyExitPresenterProtocol {
         controller?.hideOptions()
     }
     
-    func set(options: [IKZEEarlyExitTax]) {
+    func setUpPresenting(options: [IKZEEarlyExitTax]) {
         let texts = options.map(mapToText)
         controller?.set(options: texts)
+    
+        controller?.loadFormatters(currencyFormatter: NumberFormatter.currencyFormatter)
     }
     
     func show(earlyExit: IKZEEarlyExitTax?) {

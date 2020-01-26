@@ -2,6 +2,7 @@ import UIKit
 import Eureka
 
 protocol IKZEEarlyExitViewControllerProtocol: AnyObject {
+    func loadFormatters(currencyFormatter: Formatter)
     func showOptions()
     func hideOptions()
     func set(options: [String])
@@ -89,6 +90,10 @@ extension IKZEEarlyExitViewController: IKZEEarlyExitViewControllerProtocol {
     
     private var yearToDateIncomeRow: IntRow? {
         return form.rowBy(tag: RowTag.yearToDateIncome.rawValue) as? IntRow
+    }
+    
+    func loadFormatters(currencyFormatter: Formatter) {
+        yearToDateIncomeRow?.formatter = currencyFormatter
     }
     
     func showOptions() {

@@ -31,7 +31,7 @@ final class IKZEEarlyExitInteractor: IKZEEarlyExitInteractorProtocol {
     }
     
     func setUp() {
-        presenter.set(options: options)
+        presenter.setUpPresenting(options: options)
         presenter.show(earlyExit: earlyExitTax)
     }
     
