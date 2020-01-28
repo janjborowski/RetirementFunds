@@ -19,9 +19,10 @@ final class IKZECalculatorViewController: FormViewController {
     private enum RowTag: String {
         case annualInput
         case annualInputError
-        case taxBrackets
         case rateOfReturn
         case earlyExit
+        case taxBrackets
+        case taxReturnReinvestment
         case investedCapital
         case futureCapital
         case taxReturn
@@ -58,13 +59,6 @@ final class IKZECalculatorViewController: FormViewController {
             }.cellUpdate { [weak self] (_, row) in
                 self?.interactor.update(yearsToRetire: row.value)
             }
-            <<< PushRow<String>(RowTag.taxBrackets.rawValue) {
-                $0.title = "tax_bracket".localized
-            }
-            .onChange { [weak self] (row) in
-                let index = row.options?.firstIndex(of: row.value ?? "")
-                self?.interactor.update(taxBracketIndex: index)
-            }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
                 $0.cell.accessoryType = .detailButton
@@ -78,6 +72,15 @@ final class IKZECalculatorViewController: FormViewController {
             }
             .onCellSelection { [weak self] (_, _) in
                 self?.interactor.showEarlyExitPicker()
+            }
+        
+        form +++ Section("tax_relief".localized)
+            <<< PushRow<String>(RowTag.taxBrackets.rawValue) {
+                $0.title = "tax_bracket".localized
+            }
+            .onChange { [weak self] (row) in
+                let index = row.options?.firstIndex(of: row.value ?? "")
+                self?.interactor.update(taxBracketIndex: index)
             }
         
         form +++ Section()

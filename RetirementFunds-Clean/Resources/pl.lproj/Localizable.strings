@@ -24,6 +24,8 @@
 "first_bracket" = "I próg";
 "second_bracket" = "II próg";
 "flat_tax" = "Podatek linowy";
+"tax_relief" = "Ulga";
+"tax_return_reinvestment" = "Reinwestowanie zwrotów";
 
 "progressive_tax_rate" = "Progresywna skala";
 "no_early_exit" = "Brak wcześniejszej wypłaty";

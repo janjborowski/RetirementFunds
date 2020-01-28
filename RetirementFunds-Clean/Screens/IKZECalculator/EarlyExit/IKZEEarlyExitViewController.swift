@@ -73,6 +73,7 @@ final class IKZEEarlyExitViewController: FormViewController {
     }
     
     @objc private func saveButtonTapped() {
+        tableView.endEditing(true)
         interactor.saveAndExit()
     }
     
