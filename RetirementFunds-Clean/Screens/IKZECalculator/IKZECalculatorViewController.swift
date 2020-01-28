@@ -10,6 +10,7 @@ protocol IKZECalculatorViewControllerProtocol: AnyObject {
     func showInvalidAnnualInput(errorRow: ErrorLabelRow)
     func show(earlyExitDescription: String)
     
+    func show(investedCapital: Int)
     func show(futureCapital: Int, taxReturn: Int)
 }
 
@@ -21,6 +22,7 @@ final class IKZECalculatorViewController: FormViewController {
         case taxBrackets
         case rateOfReturn
         case earlyExit
+        case investedCapital
         case futureCapital
         case taxReturn
     }
@@ -79,6 +81,10 @@ final class IKZECalculatorViewController: FormViewController {
             }
         
         form +++ Section()
+            <<< IntRow(RowTag.investedCapital.rawValue) {
+                $0.title = "invested_capital".localized
+                $0.cell.textField.isUserInteractionEnabled = false
+            }
             <<< IntRow(RowTag.futureCapital.rawValue) {
                 $0.title = "future_capital".localized
                 $0.cell.textField.isUserInteractionEnabled = false
@@ -103,6 +109,7 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
     
     func loadFormatters(currencyFormatter: Formatter, rateOfReturnFormatter: Formatter) {
         load(formatter: currencyFormatter, in: .annualInput)
+        load(formatter: currencyFormatter, in: .investedCapital)
         load(formatter: currencyFormatter, in: .futureCapital)
         load(formatter: currencyFormatter, in: .taxReturn)
         load(formatter: rateOfReturnFormatter, in: .rateOfReturn)
@@ -152,6 +159,10 @@ extension IKZECalculatorViewController: IKZECalculatorViewControllerProtocol {
         let earlyExitRow: LabelRow? = find(row: .earlyExit)
         earlyExitRow?.value = earlyExitDescription
         earlyExitRow?.reload()
+    }
+    
+    func show(investedCapital: Int) {
+        reload(intRow: .investedCapital, with: investedCapital)
     }
     
     func show(futureCapital: Int, taxReturn: Int) {

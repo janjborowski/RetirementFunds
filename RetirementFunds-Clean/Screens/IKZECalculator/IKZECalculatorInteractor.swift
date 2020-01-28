@@ -82,9 +82,14 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
-            let yearsToRetire = yearsToRetire,
-            let taxBracket = taxBracket else {
+            let yearsToRetire = yearsToRetire else {
+                presenter.show(investedCapital: 0)
                 return
+        }
+        
+        presenter.show(investedCapital: annualInput * yearsToRetire)
+        guard let taxBracket = taxBracket else {
+            return
         }
         
         let plan = IKZESavingsPlan(

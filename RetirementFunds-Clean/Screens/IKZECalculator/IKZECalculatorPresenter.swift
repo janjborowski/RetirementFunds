@@ -8,6 +8,7 @@ protocol IKZECalculatorPresenterProtocol {
     func showInvalidAnnualInput(limit: Int)
     func show(earlyExitTax: IKZEEarlyExitTax?)
     
+    func show(investedCapital: Int)
     func show(futureCapital: Int, taxReturn: Int)
 }
 
@@ -48,6 +49,10 @@ final class IKZECalculatorPresenter: IKZECalculatorPresenterProtocol {
         case .progressiveRate:
             viewController?.show(earlyExitDescription: "progressive_tax_rate".localized)
         }
+    }
+    
+    func show(investedCapital: Int) {
+        viewController?.show(investedCapital: investedCapital)
     }
     
     func show(futureCapital: Int, taxReturn: Int) {
