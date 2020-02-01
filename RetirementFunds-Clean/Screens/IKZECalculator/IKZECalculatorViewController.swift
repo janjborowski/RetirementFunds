@@ -82,6 +82,12 @@ final class IKZECalculatorViewController: FormViewController {
                 let index = row.options?.firstIndex(of: row.value ?? "")
                 self?.interactor.update(taxBracketIndex: index)
             }
+            <<< SwitchRow(RowTag.taxReturnReinvestment.rawValue) {
+                $0.title = "tax_return_reinvestment".localized
+            }
+            .onChange { [weak self] (row) in
+                self?.interactor.update(taxReturnReinvestment: row.value)
+            }
         
         form +++ Section()
             <<< IntRow(RowTag.investedCapital.rawValue) {

@@ -19,7 +19,14 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
 
     func test_computeFutureCapital_shouldReturnAnnualSavings_whenYearsToRetireIsZero() {
         // Arrange
-        let plan = IKZESavingsPlan(annualSavings: 1000, yearsToRetire: 0, rateOfReturn: 10, taxBracket: 0.18, earlyExit: nil)
+        let plan = IKZESavingsPlan(
+            annualSavings: 1000,
+            yearsToRetire: 0,
+            rateOfReturn: 10,
+            taxBracket: 0.18,
+            taxReturnReinvestment: false,
+            earlyExit: nil
+        )
         
         // Act
         let result = sut.computeFutureCapital(for: plan)
@@ -31,7 +38,14 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
     
     func test_computeFutureCapital_shouldReturnSavingsWithInterestAndTaxReturn_whenYearsToRetireIsGreaterThanZero() {
         // Arrange
-        let plan = IKZESavingsPlan(annualSavings: 1000, yearsToRetire: 5, rateOfReturn: 5, taxBracket: 0.18, earlyExit: nil)
+        let plan = IKZESavingsPlan(
+            annualSavings: 1000,
+            yearsToRetire: 5,
+            rateOfReturn: 5,
+            taxBracket: 0.18,
+            taxReturnReinvestment: false,
+            earlyExit: nil
+        )
         
         // Act
         let result = sut.computeFutureCapital(for: plan)
@@ -112,12 +126,32 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         XCTAssertEqual(result.taxReturn, 900)
     }
     
+    func test_computeFutureCapital_shouldReturnCapital_whenTaxReturnIsReinvested() {
+        // Arrange
+        let plan = IKZESavingsPlan(
+            annualSavings: 1000,
+            yearsToRetire: 5,
+            rateOfReturn: 5,
+            taxBracket: 0.18,
+            taxReturnReinvestment: true,
+            earlyExit: nil
+        )
+        
+        // Act
+        let result = sut.computeFutureCapital(for: plan)
+        
+        // Assert
+        XCTAssertEqual(result.capital, 5221)
+        XCTAssertEqual(result.taxReturn, 976)
+    }
+    
     private func createSavingsPlan(with earlyExit: IKZEEarlyExitTax) -> IKZESavingsPlan {
         return IKZESavingsPlan(
             annualSavings: 1000,
             yearsToRetire: 5,
             rateOfReturn: 5,
             taxBracket: 0.18,
+            taxReturnReinvestment: false,
             earlyExit: earlyExit
         )
     }

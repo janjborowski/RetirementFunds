@@ -18,8 +18,8 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
         }
         
         var totalCapital: Decimal = 0
-        let taxReturn: Decimal = plan.annualSavings * plan.taxBracket * Decimal(plan.yearsToRetire)
         let capitalGrowth = 1 + plan.rateOfReturn / 100
+        let taxReturn = computeTaxReturn(for: plan, with: capitalGrowth)
         
         for _ in 0..<plan.yearsToRetire {
             totalCapital = (totalCapital + plan.annualSavings) * capitalGrowth
@@ -58,6 +58,23 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
                 }
             }
         }
+    }
+    
+    private func computeTaxReturn(for plan: IKZESavingsPlan, with capitalGrowth: Decimal) -> Decimal {
+        let annualTaxReturn = plan.annualSavings * plan.taxBracket
+        guard plan.taxReturnReinvestment else {
+            return annualTaxReturn * Decimal(plan.yearsToRetire)
+        }
+        
+        var totalCapital: Decimal = 0
+        let investmentPeriod = plan.yearsToRetire - 1
+        let investedCapital = Decimal(investmentPeriod) * annualTaxReturn
+        for _ in 0..<investmentPeriod {
+            totalCapital = (totalCapital + annualTaxReturn) * capitalGrowth
+        }
+        
+        let capitalWithoutLastYearReturn = investedCapital + (totalCapital - investedCapital) * (1 - financialConstants.capitalGainsTax)
+        return capitalWithoutLastYearReturn + annualTaxReturn
     }
     
 }

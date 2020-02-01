@@ -8,6 +8,7 @@ protocol IKZECalculatorInteractorProtocol {
     func update(yearsToRetire: Int?)
     func update(rateOfReturn: Int?)
     func update(taxBracketIndex: Int?)
+    func update(taxReturnReinvestment: Bool?)
 }
 
 final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
@@ -23,6 +24,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     private var yearsToRetire: Int?
     private var taxBracket: Decimal?
     private var rateOfReturn: Int
+    private var taxReturnReinvestment = false
     private var earlyExitTax: IKZEEarlyExitTax?
     
     init(router: IKZECalculatorRouterProtocol, presenter: IKZECalculatorPresenterProtocol, ikzeCalculator: IKZECalculatorUseCaseProtocol, constants: FinancialConstants) {
@@ -80,6 +82,14 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
         recalculateIfPossible()
     }
     
+    func update(taxReturnReinvestment: Bool?) {
+        guard let taxReturnReinvestment = taxReturnReinvestment else {
+            return
+        }
+        self.taxReturnReinvestment = taxReturnReinvestment
+        recalculateIfPossible()
+    }
+    
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
             let yearsToRetire = yearsToRetire else {
@@ -97,6 +107,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
             yearsToRetire: yearsToRetire,
             rateOfReturn: Decimal(rateOfReturn),
             taxBracket: taxBracket,
+            taxReturnReinvestment: taxReturnReinvestment,
             earlyExit: earlyExitTax
         )
         let result = ikzeCalculator.computeFutureCapital(for: plan)

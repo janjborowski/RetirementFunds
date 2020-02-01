@@ -6,7 +6,8 @@ struct IKZESavingsPlan {
     let yearsToRetire: Int
     let rateOfReturn: Decimal
     let taxBracket: Decimal
- 
+
+    let taxReturnReinvestment: Bool
     let earlyExit: IKZEEarlyExitTax?
     
 }
