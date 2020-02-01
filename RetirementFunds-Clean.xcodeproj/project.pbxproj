@@ -26,6 +26,7 @@
 		F233F04B2392667E0078114F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F233F04D2392667E0078114F /* Localizable.strings */; };
 		F266AEE923BA801100DF4DFB /* NumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266AEE823BA801100DF4DFB /* NumberFormatterTests.swift */; };
 		F266AEEB23BA82C100DF4DFB /* Locale+Only.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266AEEA23BA82C100DF4DFB /* Locale+Only.swift */; };
+		F292717223E58AED0097A89D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F292717123E58AED0097A89D /* README.md */; };
 		F2ABC565238A7C3A000D66E6 /* OptionsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */; };
 		F2AE367B23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */; };
 		F2AE367E23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AE367D23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift */; };
@@ -100,6 +101,7 @@
 		F233F04C2392667E0078114F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F266AEE823BA801100DF4DFB /* NumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterTests.swift; sourceTree = "<group>"; };
 		F266AEEA23BA82C100DF4DFB /* Locale+Only.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Only.swift"; sourceTree = "<group>"; };
+		F292717123E58AED0097A89D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F2ABC564238A7C3A000D66E6 /* OptionsListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsListCellViewModel.swift; sourceTree = "<group>"; };
 		F2AE367A23A4DE2F006D4BE6 /* IKECalculatorPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IKECalculatorPresenter.swift; sourceTree = "<group>"; };
 		F2AE367D23A4E73C006D4BE6 /* RateOfReturnExplanationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateOfReturnExplanationViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		F2FD6CEB238A74DC00FDF5BF = {
 			isa = PBXGroup;
 			children = (
+				F292717123E58AED0097A89D /* README.md */,
 				F2FD6CF6238A74DC00FDF5BF /* RetirementFunds-Clean */,
 				F207A4DB23930638008793C0 /* RetirementFunds-CleanTests */,
 				F2FD6CF5238A74DC00FDF5BF /* Products */,
@@ -467,6 +470,7 @@
 			files = (
 				F233F04B2392667E0078114F /* Localizable.strings in Resources */,
 				F2FD6D16238A787200FDF5BF /* LaunchScreen.storyboard in Resources */,
+				F292717223E58AED0097A89D /* README.md in Resources */,
 				F2FD6D15238A787200FDF5BF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
