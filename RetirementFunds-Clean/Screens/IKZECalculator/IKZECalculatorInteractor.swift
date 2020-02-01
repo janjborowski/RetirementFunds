@@ -5,7 +5,7 @@ protocol IKZECalculatorInteractorProtocol {
     func showRateOfReturnExplanation()
     func showEarlyExitPicker()
     func update(annualInput: Int?)
-    func update(yearsToRetire: Int?)
+    func update(yearsOfInvesting: Int?)
     func update(rateOfReturn: Int?)
     func update(taxBracketIndex: Int?)
     func update(taxReturnReinvestment: Bool?)
@@ -21,7 +21,7 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     private let constants: FinancialConstants
     
     private var annualInput: Int?
-    private var yearsToRetire: Int?
+    private var yearsOfInvesting: Int?
     private var taxBracket: Decimal?
     private var rateOfReturn: Int
     private var taxReturnReinvestment = false
@@ -61,8 +61,8 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
         }
     }
     
-    func update(yearsToRetire: Int?) {
-        self.yearsToRetire = yearsToRetire
+    func update(yearsOfInvesting: Int?) {
+        self.yearsOfInvesting = yearsOfInvesting
         recalculateIfPossible()
     }
     
@@ -92,19 +92,19 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
     
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
-            let yearsToRetire = yearsToRetire else {
+            let yearsOfInvesting = yearsOfInvesting else {
                 presenter.show(investedCapital: 0)
                 return
         }
         
-        presenter.show(investedCapital: annualInput * yearsToRetire)
+        presenter.show(investedCapital: annualInput * yearsOfInvesting)
         guard let taxBracket = taxBracket else {
             return
         }
         
         let plan = IKZESavingsPlan(
             annualSavings: Decimal(annualInput),
-            yearsToRetire: yearsToRetire,
+            yearsOfInvesting: yearsOfInvesting,
             rateOfReturn: Decimal(rateOfReturn),
             taxBracket: taxBracket,
             taxReturnReinvestment: taxReturnReinvestment,

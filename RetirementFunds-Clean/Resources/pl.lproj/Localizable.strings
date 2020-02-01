@@ -11,16 +11,16 @@
 "ike" = "IKE";
 "ikze" = "IKZE";
 "annual_input" = "Roczna wpłata";
-"years_to_retirement" = "Lata do emerytury";
+"years_of_investing" = "Czas inwestycji w latach";
 "rate_of_return" = "Stopa zwrotu";
 "invested_capital" = "Zainwestowany kapitał";
 "future_capital" = "Wynik";
-"early_exit" = "Wcześniejsza wypłata";
+"pre_retirement_payout" = "Wypłata przed emeryturą";
 
 "input_limit_exceeded" = "Limit wpłaty przekroczony. Maksymalna wartość to: %@";
 
 "tax_return" = "Zwrot podatku";
-"tax_bracket" = "Skala podatkowa";
+"income_tax_rate" = "Stopa podatku dochodowego";
 "first_bracket" = "I próg";
 "second_bracket" = "II próg";
 "flat_tax" = "Podatek linowy";

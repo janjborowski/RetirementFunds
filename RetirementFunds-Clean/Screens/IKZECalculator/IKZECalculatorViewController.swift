@@ -55,9 +55,9 @@ final class IKZECalculatorViewController: FormViewController {
                 self?.interactor.update(annualInput: row.value)
             }
             <<< IntRow() {
-                $0.title = "years_to_retirement".localized
+                $0.title = "years_of_investing".localized
             }.cellUpdate { [weak self] (_, row) in
-                self?.interactor.update(yearsToRetire: row.value)
+                self?.interactor.update(yearsOfInvesting: row.value)
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
@@ -66,7 +66,7 @@ final class IKZECalculatorViewController: FormViewController {
                 self?.interactor.update(rateOfReturn: row.value)
             }
             <<< LabelRow(RowTag.earlyExit.rawValue) {
-                $0.title = "early_exit".localized
+                $0.title = "pre_retirement_payout".localized
                 $0.value = "no".localized
                 $0.cell.accessoryType = .disclosureIndicator
             }
@@ -76,7 +76,7 @@ final class IKZECalculatorViewController: FormViewController {
         
         form +++ Section("tax_relief".localized)
             <<< PushRow<String>(RowTag.taxBrackets.rawValue) {
-                $0.title = "tax_bracket".localized
+                $0.title = "income_tax_rate".localized
             }
             .onChange { [weak self] (row) in
                 let index = row.options?.firstIndex(of: row.value ?? "")

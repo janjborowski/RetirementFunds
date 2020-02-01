@@ -4,7 +4,7 @@ protocol IKECalculatorInteractorProtocol {
     func setUp()
     func showRateOfReturnExplanation()
     func update(annualInput: Int?)
-    func update(yearsToRetire: Int?)
+    func update(yearsOfInvesting: Int?)
     func update(rateOfReturn: Int?)
     func update(earlyExit: Bool?)
 }
@@ -18,7 +18,7 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     private let maximumIKELimit = 15681
     
     private var annualInput: Int?
-    private var yearsToRetire: Int?
+    private var yearsOfInvesting: Int?
     private var rateOfReturn: Int
     private var earlyExit: Bool = false
     
@@ -51,8 +51,8 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
         }
     }
     
-    func update(yearsToRetire: Int?) {
-        self.yearsToRetire = yearsToRetire
+    func update(yearsOfInvesting: Int?) {
+        self.yearsOfInvesting = yearsOfInvesting
         recalculateIfPossible()
     }
     
@@ -72,12 +72,12 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
     
     private func recalculateIfPossible() {
         guard let annualInput = annualInput,
-            let yearsToRetire = yearsToRetire else {
+            let yearsOfInvesting = yearsOfInvesting else {
                 return
         }
         let plan = IKESavingsPlan(
             annualSavings: Decimal(annualInput),
-            yearsToRetire: yearsToRetire,
+            yearsOfInvesting: yearsOfInvesting,
             rateOfReturn: Decimal(rateOfReturn)
         )
         let futureCapital = ikeCalculator.computeFutureCapital(for: plan)

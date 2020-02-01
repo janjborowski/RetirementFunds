@@ -38,13 +38,13 @@ final class IKZEEarlyExitViewController: FormViewController {
         setUpBarButtons()
         interactor.setUp()
         
-        title = "early_exit".localized
+        title = "pre_retirement_payout".localized
     }
     
     private func setUpForm() {
-        form +++ Section("tax_bracket".localized)
+        form +++ Section("income_tax_rate".localized)
             <<< SwitchRow(RowTag.earlyExitSwitch.rawValue) {
-                $0.title = "early_exit".localized
+                $0.title = "pre_retirement_payout".localized
             }.onChange { [weak self] (row) in
                 self?.interactor.update(isEarlyExit: row.value)
             }

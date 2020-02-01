@@ -46,9 +46,9 @@ final class IKECalculatorViewController: FormViewController {
                 self?.interactor.update(annualInput: row.value)
             }
             <<< IntRow() {
-                $0.title = "years_to_retirement".localized
+                $0.title = "years_of_investing".localized
             }.cellUpdate { [weak self] (_, row) in
-                self?.interactor.update(yearsToRetire: row.value)
+                self?.interactor.update(yearsOfInvesting: row.value)
             }
             <<< IntRow(RowTag.rateOfReturn.rawValue) {
                 $0.title = "rate_of_return".localized
@@ -57,7 +57,7 @@ final class IKECalculatorViewController: FormViewController {
                 self?.interactor.update(rateOfReturn: row.value)
             }
             <<< SwitchRow() {
-                $0.title = "early_exit".localized
+                $0.title = "pre_retirement_payout".localized
             }.onChange { [weak self] (row) in
                 self?.interactor.update(earlyExit: row.value)
             }

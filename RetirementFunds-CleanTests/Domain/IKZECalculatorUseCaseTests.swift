@@ -17,11 +17,11 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_computeFutureCapital_shouldReturnAnnualSavings_whenYearsToRetireIsZero() {
+    func test_computeFutureCapital_shouldReturnAnnualSavings_whenYearsOfInvestingIsZero() {
         // Arrange
         let plan = IKZESavingsPlan(
             annualSavings: 1000,
-            yearsToRetire: 0,
+            yearsOfInvesting: 0,
             rateOfReturn: 10,
             taxBracket: 0.18,
             taxReturnReinvestment: false,
@@ -36,11 +36,11 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         XCTAssertEqual(result.taxReturn, 0)
     }
     
-    func test_computeFutureCapital_shouldReturnSavingsWithInterestAndTaxReturn_whenYearsToRetireIsGreaterThanZero() {
+    func test_computeFutureCapital_shouldReturnSavingsWithInterestAndTaxReturn_whenYearsOfInvestingIsGreaterThanZero() {
         // Arrange
         let plan = IKZESavingsPlan(
             annualSavings: 1000,
-            yearsToRetire: 5,
+            yearsOfInvesting: 5,
             rateOfReturn: 5,
             taxBracket: 0.18,
             taxReturnReinvestment: false,
@@ -130,7 +130,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         // Arrange
         let plan = IKZESavingsPlan(
             annualSavings: 1000,
-            yearsToRetire: 5,
+            yearsOfInvesting: 5,
             rateOfReturn: 5,
             taxBracket: 0.18,
             taxReturnReinvestment: true,
@@ -148,7 +148,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
     private func createSavingsPlan(with earlyExit: IKZEEarlyExitTax) -> IKZESavingsPlan {
         return IKZESavingsPlan(
             annualSavings: 1000,
-            yearsToRetire: 5,
+            yearsOfInvesting: 5,
             rateOfReturn: 5,
             taxBracket: 0.18,
             taxReturnReinvestment: false,
