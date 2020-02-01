@@ -3,8 +3,8 @@ import XCTest
 
 final class IKECalculatorUseCaseTests: XCTestCase {
 
-    private let annualSavingsAmmount = 1000
-    private let rateOfReturn = 4
+    private let annualSavingsAmmount: Decimal = 1000
+    private let rateOfReturn: Decimal = 4
     private var sut: IKECalculatorUseCase!
     
     override func setUp() {

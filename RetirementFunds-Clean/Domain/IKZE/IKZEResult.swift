@@ -10,9 +10,4 @@ struct IKZEResult {
         self.taxReturn = Int((taxReturn as NSDecimalNumber).doubleValue)
     }
     
-    init(noGainsCapital: Int) {
-        self.capital = noGainsCapital
-        self.taxReturn = 0
-    }
-    
 }

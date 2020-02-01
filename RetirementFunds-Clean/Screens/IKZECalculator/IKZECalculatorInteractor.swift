@@ -93,9 +93,9 @@ final class IKZECalculatorInteractor: IKZECalculatorInteractorProtocol {
         }
         
         let plan = IKZESavingsPlan(
-            annualSavings: annualInput,
+            annualSavings: Decimal(annualInput),
             yearsToRetire: yearsToRetire,
-            rateOfReturn: rateOfReturn,
+            rateOfReturn: Decimal(rateOfReturn),
             taxBracket: taxBracket,
             earlyExit: earlyExitTax
         )

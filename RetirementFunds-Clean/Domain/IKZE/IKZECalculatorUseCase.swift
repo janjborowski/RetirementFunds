@@ -13,18 +13,16 @@ final class IKZECalculatorUseCase: IKZECalculatorUseCaseProtocol {
     }
     
     func computeFutureCapital(for plan: IKZESavingsPlan) -> IKZEResult {
-        let annualSavings = Decimal(plan.annualSavings)
-        
         guard plan.yearsToRetire > 0 else {
-            return .init(noGainsCapital: plan.annualSavings)
+            return .init(capital: plan.annualSavings, taxReturn: 0)
         }
         
         var totalCapital: Decimal = 0
-        let taxReturn: Decimal = annualSavings * plan.taxBracket * Decimal(plan.yearsToRetire)
-        let capitalGrowth = 1 + Decimal(plan.rateOfReturn) / 100
+        let taxReturn: Decimal = plan.annualSavings * plan.taxBracket * Decimal(plan.yearsToRetire)
+        let capitalGrowth = 1 + plan.rateOfReturn / 100
         
         for _ in 0..<plan.yearsToRetire {
-            totalCapital = (totalCapital + annualSavings) * capitalGrowth
+            totalCapital = (totalCapital + plan.annualSavings) * capitalGrowth
         }
         
         let finalCapital = computeExitCapital(capital: totalCapital, earlyExit: plan.earlyExit)

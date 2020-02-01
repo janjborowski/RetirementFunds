@@ -25,7 +25,7 @@ final class IKZECalculatorUseCaseTests: XCTestCase {
         let result = sut.computeFutureCapital(for: plan)
         
         // Assert
-        XCTAssertEqual(result.capital, plan.annualSavings)
+        XCTAssertEqual(result.capital, plan.annualSavings.intValue)
         XCTAssertEqual(result.taxReturn, 0)
     }
     

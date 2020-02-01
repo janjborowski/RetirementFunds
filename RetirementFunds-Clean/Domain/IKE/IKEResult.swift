@@ -10,9 +10,4 @@ struct IKEResult {
         self.afterTaxation = Int((afterTaxation as NSDecimalNumber).doubleValue)
     }
     
-    init(noGainsCapital: Int) {
-        beforeTaxation = noGainsCapital
-        afterTaxation = noGainsCapital
-    }
-    
 }

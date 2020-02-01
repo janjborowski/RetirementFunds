@@ -1,3 +1,5 @@
+import Foundation
+
 protocol IKECalculatorInteractorProtocol {
     func setUp()
     func showRateOfReturnExplanation()
@@ -73,7 +75,11 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
             let yearsToRetire = yearsToRetire else {
                 return
         }
-        let plan = IKESavingsPlan(annualSavingsAmount: annualInput, yearsToRetire: yearsToRetire, rateOfReturn: rateOfReturn)
+        let plan = IKESavingsPlan(
+            annualSavingsAmount: Decimal(annualInput),
+            yearsToRetire: yearsToRetire,
+            rateOfReturn: Decimal(rateOfReturn)
+        )
         let futureCapital = ikeCalculator.computeFutureCapital(for: plan)
         
         let displayedResult = earlyExit ? futureCapital.afterTaxation : futureCapital.beforeTaxation

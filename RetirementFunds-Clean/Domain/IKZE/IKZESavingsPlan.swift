@@ -2,9 +2,9 @@ import Foundation
 
 struct IKZESavingsPlan {
     
-    let annualSavings: Int
+    let annualSavings: Decimal
     let yearsToRetire: Int
-    let rateOfReturn: Int
+    let rateOfReturn: Decimal
     let taxBracket: Decimal
  
     let earlyExit: IKZEEarlyExitTax?
