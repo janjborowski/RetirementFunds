@@ -2,7 +2,7 @@ import Foundation
 
 struct IKESavingsPlan {
     
-    let annualSavingsAmount: Decimal
+    let annualSavings: Decimal
     let yearsToRetire: Int
     let rateOfReturn: Decimal
     

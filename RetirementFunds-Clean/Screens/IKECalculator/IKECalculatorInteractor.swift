@@ -76,7 +76,7 @@ final class IKECalculatorInteractor: IKECalculatorInteractorProtocol {
                 return
         }
         let plan = IKESavingsPlan(
-            annualSavingsAmount: Decimal(annualInput),
+            annualSavings: Decimal(annualInput),
             yearsToRetire: yearsToRetire,
             rateOfReturn: Decimal(rateOfReturn)
         )

@@ -10,14 +10,14 @@ final class IKECalculatorUseCase: IKECalculatorUseCaseProtocol {
     
     func computeFutureCapital(for plan: IKESavingsPlan) -> IKEResult {
         guard plan.yearsToRetire > 0 else {
-            return .init(beforeTaxation: plan.annualSavingsAmount, afterTaxation: plan.annualSavingsAmount)
+            return .init(beforeTaxation: plan.annualSavings, afterTaxation: plan.annualSavings)
         }
         
         var totalCapital: Decimal = 0
-        let investedCapital = Decimal(plan.yearsToRetire) * plan.annualSavingsAmount
+        let investedCapital = Decimal(plan.yearsToRetire) * plan.annualSavings
         let capitalGrowth = 1 + plan.rateOfReturn / 100
         for _ in 0..<plan.yearsToRetire {
-            totalCapital = (totalCapital + plan.annualSavingsAmount) * capitalGrowth
+            totalCapital = (totalCapital + plan.annualSavings) * capitalGrowth
         }
         let afterTaxationCapital = investedCapital + (totalCapital - investedCapital) * (1 - capitalGainsTax)
         
